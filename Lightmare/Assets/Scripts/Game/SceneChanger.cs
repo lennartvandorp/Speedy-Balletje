@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneChanger : MonoBehaviour
 {
     public static SceneChanger instance;
-    [SerializeField] Scene[] levels;
+    [SerializeField] string[] levels;
 
     private void Start()
     {
@@ -17,7 +17,8 @@ public class SceneChanger : MonoBehaviour
         else { Debug.LogError("There are too many SceneManagers right now. There should only be one"); }
     }
 
-    public void ChangeToTutorial() {
-        SceneManager.LoadScene("Tutorial");
+    public void ChangeToLevel(int level)
+    {
+        SceneManager.LoadScene(levels[level]);
     }
 }
