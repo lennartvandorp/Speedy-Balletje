@@ -5,16 +5,17 @@ using UnityEngine.Audio;
 
 public class CharacterAudioManager : MonoBehaviour
 {
+    [SerializeField] private Sound speedWhoosh;
 
-    private AudioClip[] whee;
-    // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
+        speedWhoosh.source = gameObject.AddComponent<AudioSource>();
+        speedWhoosh.Init();
+
     }
-
-    // Update is called once per frame
-    void Update()
+    void playWhoosh()
     {
-        
+        speedWhoosh.Play();
     }
 }
