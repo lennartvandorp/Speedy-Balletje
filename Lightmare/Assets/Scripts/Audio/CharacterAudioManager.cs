@@ -10,9 +10,13 @@ public class CharacterAudioManager : MonoBehaviour
 
     private void Start()
     {
-        speedWhoosh.source = gameObject.AddComponent<AudioSource>();
-        speedWhoosh.Init();
+        AddSound(speedWhoosh);
+    }
 
+    void AddSound(Sound sound)
+    {
+        sound.source = gameObject.AddComponent<AudioSource>();
+        sound.Init();
     }
     void playWhoosh()
     {

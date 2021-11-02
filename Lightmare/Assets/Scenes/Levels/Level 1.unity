@@ -406,8 +406,8 @@ Transform:
   - {fileID: 1582395707}
   - {fileID: 772562951}
   - {fileID: 1395051052}
-  - {fileID: 568693460}
   - {fileID: 1905960374}
+  - {fileID: 568693460}
   - {fileID: 1849922426}
   m_Father: {fileID: 65222489}
   m_RootOrder: 2
@@ -2164,7 +2164,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6154691030500652680, guid: de564b04b3a81294380751ba2796330f, type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 6154691030500652680, guid: de564b04b3a81294380751ba2796330f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2258,11 +2258,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2216300767379839836, guid: 231db0e7e4ff0ad4c8aca05a1e7d1459, type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 2216300767379839836, guid: 231db0e7e4ff0ad4c8aca05a1e7d1459, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 2216300767379839836, guid: 231db0e7e4ff0ad4c8aca05a1e7d1459, type: 3}
       propertyPath: m_LocalPosition.y

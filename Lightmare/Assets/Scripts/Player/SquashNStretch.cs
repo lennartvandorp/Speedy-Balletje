@@ -9,6 +9,7 @@ public class SquashNStretch : MonoBehaviour
     [SerializeField] float stretchDivider;//the lower the more stretch
     [SerializeField] float stretchAcc;
     [SerializeField] Transform rotationBody;
+    SphereCollider collider;
 
     float stretchSpeed;
     Vector3 normalScale;
@@ -18,6 +19,7 @@ public class SquashNStretch : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         originalScale = transform.localScale;
         normalScale = rotationBody.transform.localScale;
+        collider = GetComponent<SphereCollider>();
     }
 
     // Update is called once per frame
@@ -32,7 +34,7 @@ public class SquashNStretch : MonoBehaviour
         float stretch = currentSpeed / stretchDivider;
 
         rotationBody.transform.localScale = normalScale + new Vector3(-stretch / 2f, -stretch / 2f, stretch);
-
+        collider.radius = normalScale.x/2f - (stretch / 2f);
     }
 
 

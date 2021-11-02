@@ -311,6 +311,7 @@ GameObject:
   - component: {fileID: 4559829983371843633}
   - component: {fileID: 4559829983371843599}
   - component: {fileID: 4559829983371843596}
+  - component: {fileID: 512789560578598659}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -377,7 +378,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4559829983371843599
 MonoBehaviour:
@@ -397,6 +398,8 @@ MonoBehaviour:
   clampOffset: 2
   acceleration: 4
   stunTime: 0.15
+  horizontalDampener: 5
+  jumpForce: 350
 --- !u!114 &4559829983371843596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,3 +413,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationRb: {fileID: 4559829983071149880}
+--- !u!114 &512789560578598659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4559829983371843634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe9219a98c64eb459bb38bb3c1d9d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedWhoosh:
+    clip: {fileID: 8300000, guid: 3d73f99224a4b524b8128fd0541cdee1, type: 3}
+    volume: 0.2
+    pitch: 100000000
+    source: {fileID: 0}

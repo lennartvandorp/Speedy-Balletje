@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float clampOffset;
     [SerializeField] float acceleration;//the acceleration in the z direction
     [SerializeField] float stunTime;
+    [SerializeField] float horizontalDampener;
+
+    [Header("Jump")]
+    [SerializeField] float jumpForce;
 
     float targetOffset;
     Vector3 mouseMovement;
@@ -19,16 +23,20 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     float finishDrag = 2;
     float normalDrag;
+    SphereCollider collider;
 
     bool active;
     bool isStunned;
     // Start is called before the first frame update
+
+    public float getCurrentSpeed() { return rb.velocity.z; }
     void Start()
     {
         startPosition = transform.position;
         rb = GetComponent<Rigidbody>();
         StartGame();//remove when events are properly implemented
         normalDrag = rb.drag;
+        collider = GetComponent<SphereCollider>();
 
         #region events
         GameManager.Instance().failGame += ResetPosition;
@@ -47,13 +55,13 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(new Vector3(0f, 0f, acceleration * 100f * rb.mass * Time.deltaTime));
             if (Input.GetMouseButton(0) && !isStunned)//While clicked
             {
-                if (!isClicked)
+                if (!isClicked)//on click start
                 {
                     targetOffset = transform.position.x;
                     target.position = transform.position;
                     isClicked = true;
                 }
-                else
+                else//while clicked
                 {
                     mouseMovement = Input.mousePosition - lastMousePos;
                     targetOffset += mouseMovement.x * sensitivity;
@@ -63,11 +71,16 @@ public class PlayerController : MonoBehaviour
                     rb.velocity.y, rb.velocity.z);//Moves the character
                 }
             }
-            else if (isClicked)
+            else if (isClicked)//on release
             {
                 targetOffset = transform.position.x;
                 target.position = transform.position;
                 isClicked = false;
+                TryToJump();
+            }
+            else
+            {
+                rb.velocity = new Vector3(rb.velocity.x * (1f - horizontalDampener * Time.deltaTime), rb.velocity.y, rb.velocity.z);
             }
 
             lastMousePos = Input.mousePosition;
@@ -115,5 +128,23 @@ public class PlayerController : MonoBehaviour
         isStunned = true;
         yield return new WaitForSeconds(time);
         isStunned = false;
+    }
+
+    void TryToJump()
+    {
+        Ray ray = new Ray(transform.position + new Vector3(0f, -collider.radius, 0f), Vector3.down * .1f);
+        RaycastHit hit;
+        Physics.Raycast(ray, out hit, .1f);
+        
+        if(hit.collider)
+        {
+            
+            Jump();
+        }
+    }
+
+    void Jump()
+    {
+        rb.AddForce(new Vector3(0f, jumpForce * rb.mass, 0f));
     }
 }
