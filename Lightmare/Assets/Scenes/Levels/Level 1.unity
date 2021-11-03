@@ -1529,7 +1529,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3926129282084171870, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20.653166
+      value: 20.55
       objectReference: {fileID: 0}
     - target: {fileID: 3926129282084171870, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1942,28 +1942,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1511045940}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1517448727 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3926129282357387001, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
-  m_PrefabInstance: {fileID: 1268540649}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1517448728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1517448727}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbe9219a98c64eb459bb38bb3c1d9d81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedWhoosh:
-    clip: {fileID: 8300000, guid: 3d73f99224a4b524b8128fd0541cdee1, type: 3}
-    volume: 0.2
-    pitch: 1
-    source: {fileID: 0}
 --- !u!1001 &1537463861
 PrefabInstance:
   m_ObjectHideFlags: 0

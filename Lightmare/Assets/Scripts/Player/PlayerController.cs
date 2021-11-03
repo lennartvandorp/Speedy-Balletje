@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
                 target.position = transform.position;
                 isClicked = false;
                 TryToJump();
+                
             }
             else
             {
@@ -146,5 +147,6 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         rb.AddForce(new Vector3(0f, jumpForce * rb.mass, 0f));
+        GameManager.Instance().OnJump();
     }
 }

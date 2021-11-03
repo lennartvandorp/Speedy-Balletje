@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public event Action failGame;
     public event Action restart;
     public event Action stunPlayer;
+    public event Action onJump;
     // Start is called before the first frame update
     void Awake()
     {
@@ -48,5 +49,10 @@ public class GameManager : MonoBehaviour
     public void StunPlayer()
     {
         stunPlayer();
+    }
+
+    public void OnJump()
+    {
+        onJump();
     }
 }

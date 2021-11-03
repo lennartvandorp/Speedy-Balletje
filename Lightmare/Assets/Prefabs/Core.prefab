@@ -903,7 +903,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9109048071779687096, guid: 39d31f1b9d7fd754cb355316843165ed, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 39d31f1b9d7fd754cb355316843165ed, type: 3}
 --- !u!54 &3926129282357387000 stripped
 Rigidbody:
