@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Transform target;
     [SerializeField] float sensitivity;
-    [SerializeField] float maxSpeed;
+    [SerializeField] float normalMaxSpeed;
+    [SerializeField] float airMaxSpeed;
     [SerializeField] float clampOffset;
     [SerializeField] float acceleration;//the acceleration in the z direction
     [SerializeField] float stunTime;
@@ -23,10 +24,20 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     float finishDrag = 2;
     float normalDrag;
+    float maxSpeed;
     SphereCollider collider;
 
     bool active;
     bool isStunned;
+    bool InAir()
+    {
+        Ray ray = new Ray(transform.position + new Vector3(0f, -collider.radius, 0f), Vector3.down * .1f);
+        RaycastHit hit;
+        Physics.Raycast(ray, out hit, .1f);
+        if (hit.collider){maxSpeed = normalMaxSpeed;}
+        else maxSpeed = airMaxSpeed;
+        return (!hit.collider);
+    }
     // Start is called before the first frame update
 
     public float getCurrentSpeed() { return rb.velocity.z; }
@@ -52,6 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         if (active)
         {
+            InAir();
             rb.AddForce(new Vector3(0f, 0f, acceleration * 100f * rb.mass * Time.deltaTime));
             if (Input.GetMouseButton(0) && !isStunned)//While clicked
             {
@@ -77,7 +89,7 @@ public class PlayerController : MonoBehaviour
                 target.position = transform.position;
                 isClicked = false;
                 TryToJump();
-                
+
             }
             else
             {
@@ -133,13 +145,9 @@ public class PlayerController : MonoBehaviour
 
     void TryToJump()
     {
-        Ray ray = new Ray(transform.position + new Vector3(0f, -collider.radius, 0f), Vector3.down * .1f);
-        RaycastHit hit;
-        Physics.Raycast(ray, out hit, .1f);
-        
-        if(hit.collider)
+        if (!InAir())
         {
-            
+
             Jump();
         }
     }
