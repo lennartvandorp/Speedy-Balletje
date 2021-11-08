@@ -2004,10 +2004,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Core
       objectReference: {fileID: 0}
+    - target: {fileID: 3926129282357386948, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
+      propertyPath: normalMaxSpeed
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3926129282357387002, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: 938324d4ff6b05140b687733452ef868, type: 2}
+    - target: {fileID: 3926129282357387003, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3926129282357387003, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -9.741731
+      objectReference: {fileID: 0}
+    - target: {fileID: 3926129282741348881, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
 --- !u!1 &1299426781

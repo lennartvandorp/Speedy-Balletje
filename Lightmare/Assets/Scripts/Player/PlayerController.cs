@@ -31,16 +31,21 @@ public class PlayerController : MonoBehaviour
     bool isStunned;
     bool InAir()
     {
-        Ray ray = new Ray(transform.position + new Vector3(0f, -collider.radius, 0f), Vector3.down * .1f);
-        RaycastHit hit;
-        Physics.Raycast(ray, out hit, .1f);
-        if (hit.collider){maxSpeed = normalMaxSpeed;}
-        else maxSpeed = airMaxSpeed;
-        return (!hit.collider);
-    }
-    // Start is called before the first frame update
 
+        if (rb.velocity.y < 1f && rb.velocity.y > -1f)//checks the velocity
+        {
+            Debug.Log("OnGround");
+            return false;
+        }
+        else
+        {
+            Debug.Log("InAir");
+            return true;
+        }
+    }
     public float getCurrentSpeed() { return rb.velocity.z; }
+
+
     void Start()
     {
         startPosition = transform.position;
@@ -48,6 +53,7 @@ public class PlayerController : MonoBehaviour
         StartGame();//remove when events are properly implemented
         normalDrag = rb.drag;
         collider = GetComponent<SphereCollider>();
+        maxSpeed = normalMaxSpeed;
 
         #region events
         GameManager.Instance().failGame += ResetPosition;
@@ -57,23 +63,28 @@ public class PlayerController : MonoBehaviour
         #endregion
     }
 
-    bool isClicked;
     // Update is called once per frame
     void Update()
     {
         if (active)
         {
-            InAir();
-            rb.AddForce(new Vector3(0f, 0f, acceleration * 100f * rb.mass * Time.deltaTime));
-            if (Input.GetMouseButton(0) && !isStunned)//While clicked
+            bool inAir = InAir();
+            if (inAir)//changes the steering speed based on wether the player is in the air
             {
-                if (!isClicked)//on click start
+                maxSpeed = airMaxSpeed;
+            }
+            else { maxSpeed = normalMaxSpeed; }
+
+
+            rb.AddForce(new Vector3(0f, 0f, acceleration * 100f * rb.mass * Time.deltaTime));
+            if (!isStunned)//While clicked
+            {
+                if (Input.GetMouseButtonDown(0))//on click start
                 {
                     targetOffset = transform.position.x;
                     target.position = transform.position;
-                    isClicked = true;
                 }
-                else//while clicked
+                if (Input.GetMouseButton(0))//while clicked
                 {
                     mouseMovement = Input.mousePosition - lastMousePos;
                     targetOffset += mouseMovement.x * sensitivity;
@@ -83,13 +94,16 @@ public class PlayerController : MonoBehaviour
                     rb.velocity.y, rb.velocity.z);//Moves the character
                 }
             }
-            else if (isClicked)//on release
+            else
             {
                 targetOffset = transform.position.x;
                 target.position = transform.position;
-                isClicked = false;
+            }
+            if (Input.GetMouseButtonUp(0))//on release
+            {
+                targetOffset = transform.position.x;
+                target.position = transform.position;
                 TryToJump();
-
             }
             else
             {
@@ -147,7 +161,6 @@ public class PlayerController : MonoBehaviour
     {
         if (!InAir())
         {
-
             Jump();
         }
     }
