@@ -12,7 +12,7 @@ public class CharacterAudioManager : MonoBehaviour
     {
         AddSound(speedWhoosh);
         AddSound(jumpSound);
-        GameManager.Instance().onJump += PlayJumpSound;
+        GameManager.Instance.onJump += PlayJumpSound;
     }
 
     void AddSound(Sound sound)

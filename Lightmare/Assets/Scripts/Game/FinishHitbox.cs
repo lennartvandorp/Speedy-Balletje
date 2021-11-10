@@ -20,7 +20,7 @@ public class FinishHitbox : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            GameManager.Instance().Finish();
+            GameManager.Instance.Finish();
             if (finishParticles)
             {
                 finishParticles.Play();

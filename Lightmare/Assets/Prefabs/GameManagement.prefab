@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  impactParticles: {fileID: 7753854932384825103, guid: 60449f2c363b1f047b0cd3a1f01a960f, type: 3}

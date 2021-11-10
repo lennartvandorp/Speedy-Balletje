@@ -8,8 +8,8 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.Instance().finishGame += EnableVictoryUI;
-        GameManager.Instance().restart += DisableVictoryGroup;
+        GameManager.Instance.finishGame += EnableVictoryUI;
+        GameManager.Instance.restart += DisableVictoryGroup;
         DisableVictoryGroup();
     }
 
@@ -25,6 +25,6 @@ public class UIManager : MonoBehaviour
 
     public void ResetGame()
     {
-        GameManager.Instance().Restart();//This should not be fail
+        GameManager.Instance.Restart();//This should not be fail
     }
 }

@@ -12,7 +12,7 @@ public class SpeedLineHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerRb = GameManager.Instance().Player().GetComponent<Rigidbody>();
+        playerRb = GameManager.Instance.Player.GetComponent<Rigidbody>();
         ps = GetComponent<ParticleSystem>();
     }
 

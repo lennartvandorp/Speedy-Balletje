@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,9 @@ public class Obstacle : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            GameManager.Instance().StunPlayer();
+            GameManager.Instance.StunPlayer();
+            GameObject impactParticles = Instantiate(GameManager.Instance.ImpactParticles);
+            impactParticles.transform.position = collision.GetContact(0).point;
         }
     }
 }

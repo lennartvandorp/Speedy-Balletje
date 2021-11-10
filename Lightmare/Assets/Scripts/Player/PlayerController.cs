@@ -50,10 +50,10 @@ public class PlayerController : MonoBehaviour
         maxSpeed = normalMaxSpeed;
 
         #region events
-        GameManager.Instance().failGame += ResetPosition;
-        GameManager.Instance().finishGame += Finish;
-        GameManager.Instance().restart += ResetPosition;
-        GameManager.Instance().stunPlayer += GetStunned;
+        GameManager.Instance.failGame += ResetPosition;
+        GameManager.Instance.finishGame += Finish;
+        GameManager.Instance.restart += ResetPosition;
+        GameManager.Instance.stunPlayer += GetStunned;
         #endregion
     }
 
@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
             lastMousePos = Input.mousePosition;
             if (transform.position.y < 0f)
             {
-                GameManager.Instance().Fail();
+                GameManager.Instance.Fail();
             }
         }
     }
@@ -161,6 +161,6 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         rb.AddForce(new Vector3(0f, jumpForce * rb.mass, 0f));
-        GameManager.Instance().OnJump();
+        GameManager.Instance.OnJump();
     }
 }

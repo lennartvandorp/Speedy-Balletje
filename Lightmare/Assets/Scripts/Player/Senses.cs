@@ -9,7 +9,7 @@ public class Senses : MonoBehaviour
     SphereCollider collider;
     PlayerController controller;
 
-    float groundDist = .3f;
+    float groundDist = .05f;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +27,8 @@ public class Senses : MonoBehaviour
     {
         Ray ray = new Ray(transform.position + new Vector3(0f, -collider.radius + .05f, 0f), new Vector3(0f, -1, 0f));
         RaycastHit hit;
-        Physics.Raycast(ray, out hit, groundDist);
-        Debug.DrawRay(ray.origin, ray.direction * groundDist, Color.blue);
+        Physics.Raycast(ray, out hit, groundDist + .05f);
+        Debug.DrawRay(ray.origin, ray.direction * (groundDist + .05f), Color.blue);
         if (hit.collider && !hit.collider.isTrigger)
         {
             controller.IsTouchingGroundSetter = true;

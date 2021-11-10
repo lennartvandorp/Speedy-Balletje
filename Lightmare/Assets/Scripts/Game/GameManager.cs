@@ -7,14 +7,20 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
 
-    public static GameManager Instance()
+    public static GameManager Instance
     {
-        return instance;
+        get { return instance; }
     }
     [SerializeField] private GameObject player;
-    public GameObject Player()
+    public GameObject Player
     {
-        return player;
+        get { return player; }
+    }
+
+    [SerializeField] private GameObject impactParticles;
+    public GameObject ImpactParticles
+    {
+        get { return impactParticles; }
     }
 
 

@@ -13,7 +13,7 @@ public class SpeedIndicator : MonoBehaviour
         if(tmp == null) { Debug.Log("Nope"); }
 
 
-        playerRb = GameManager.Instance().Player().GetComponent<Rigidbody>();
+        playerRb = GameManager.Instance.Player.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
