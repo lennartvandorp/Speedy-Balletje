@@ -1,0 +1,29 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[RequireComponent(typeof(PlayerController))]
+[RequireComponent(typeof(SphereCollider))]
+public class Senses : MonoBehaviour
+{
+    SphereCollider collider;
+    PlayerController controller;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        collider = GetComponent<SphereCollider>();
+        controller = GetComponent<PlayerController>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        SetIsTouchingGround();
+    }
+
+    void SetIsTouchingGround() 
+    {
+        Ray ray = new Ray(transform.position + new Vector3(0f, -collider.radius, 0f), new Vector3(0f, -))
+    }
+}

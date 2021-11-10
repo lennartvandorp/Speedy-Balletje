@@ -29,20 +29,14 @@ public class PlayerController : MonoBehaviour
 
     bool active;
     bool isStunned;
-    bool InAir()
-    {
 
-        if (rb.velocity.y < 1f && rb.velocity.y > -1f)//checks the velocity
-        {
-            Debug.Log("OnGround");
-            return false;
-        }
-        else
-        {
-            Debug.Log("InAir");
-            return true;
-        }
+    bool isTouchingGround;
+
+    [HideInInspector] public bool IsTouchingGroundSetter
+    {
+        set { isTouchingGround = value; }
     }
+
     public float getCurrentSpeed() { return rb.velocity.z; }
 
 
@@ -68,8 +62,7 @@ public class PlayerController : MonoBehaviour
     {
         if (active)
         {
-            bool inAir = InAir();
-            if (inAir)//changes the steering speed based on wether the player is in the air
+            if (!isTouchingGround)//changes the steering speed based on wether the player is in the air
             {
                 maxSpeed = airMaxSpeed;
             }
@@ -159,7 +152,7 @@ public class PlayerController : MonoBehaviour
 
     void TryToJump()
     {
-        if (!InAir())
+        if (isTouchingGround)
         {
             Jump();
         }
