@@ -10,6 +10,33 @@ public class Senses : MonoBehaviour
     PlayerController controller;
 
     float groundDist = .05f;
+
+    [HideInInspector] public float GetPlayerZSpeed
+    {
+        get
+        {
+            return controller.getCurrentSpeed();
+        }
+    }
+
+    /// <summary>
+    /// actually saves the value, don't directly modify
+    /// </summary>
+    bool touchingGround;
+    bool isTouchingGround
+    {
+        set
+        {
+            controller.IsTouchingGroundSetter = value;
+            touchingGround = value;
+        }
+        get { return touchingGround; }
+    }
+    [HideInInspector] public bool IsTouchingGround
+    {
+        get { return touchingGround; }
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +50,9 @@ public class Senses : MonoBehaviour
         SetIsTouchingGround();
     }
 
+    /// <summary>
+    /// IsTouchingGround
+    /// </summary>
     void SetIsTouchingGround()
     {
         Ray ray = new Ray(transform.position + new Vector3(0f, -collider.radius + .05f, 0f), new Vector3(0f, -1, 0f));
@@ -31,11 +61,12 @@ public class Senses : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * (groundDist + .05f), Color.blue);
         if (hit.collider && !hit.collider.isTrigger)
         {
-            controller.IsTouchingGroundSetter = true;
-            Debug.Log("Hitground");
+            isTouchingGround = true;
         }
-        else { controller.IsTouchingGroundSetter = false;
-            Debug.Log("NoHitGround");
+        else { 
+            isTouchingGround = false;
         }
     }
+
+    
 }
