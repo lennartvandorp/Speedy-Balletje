@@ -32,7 +32,10 @@ public class PlayerController : MonoBehaviour
 
     bool isTouchingGround;
 
-    [HideInInspector] public bool IsTouchingGroundSetter
+    bool wasClicked;
+
+    [HideInInspector]
+    public bool IsTouchingGroundSetter
     {
         set { isTouchingGround = value; }
     }
@@ -72,36 +75,44 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(new Vector3(0f, 0f, acceleration * 100f * rb.mass * Time.deltaTime));
             if (!isStunned)//While clicked
             {
-                if (Input.GetMouseButtonDown(0))//on click start
-                {
-                    targetOffset = transform.position.x;
-                    target.position = transform.position;
-                }
                 if (Input.GetMouseButton(0))//while clicked
                 {
-                    mouseMovement = Input.mousePosition - lastMousePos;
-                    targetOffset += mouseMovement.x * sensitivity;
-                    targetOffset = Mathf.Clamp(targetOffset, -clampOffset, clampOffset);//Clamps the position of the offset
-                    target.position = new Vector3(targetOffset, transform.position.y, transform.position.z);
-                    rb.velocity = new Vector3(Mathf.Clamp((target.position.x - transform.position.x) * 10f, -maxSpeed, maxSpeed),
-                    rb.velocity.y, rb.velocity.z);//Moves the character
+                    if (!wasClicked)// On click start
+                    {
+                        lastMousePos = Input.mousePosition;
+                        targetOffset = transform.position.x;
+                        target.position = transform.position;
+                        wasClicked = true;
+                    }
+                    else
+                    {
+                        mouseMovement = Input.mousePosition - lastMousePos;
+                        targetOffset += mouseMovement.x * sensitivity;
+                        targetOffset = Mathf.Clamp(targetOffset, -clampOffset, clampOffset);//Clamps the position of the offset
+                        target.position = new Vector3(targetOffset, transform.position.y, transform.position.z);
+                        rb.velocity = new Vector3(Mathf.Clamp((target.position.x - transform.position.x) * 10f, -maxSpeed, maxSpeed),
+                        rb.velocity.y, rb.velocity.z);//Moves the character
+                    }
+                }
+                else
+                {
+                    if (wasClicked)
+                    {
+                        TryToJump();
+                        wasClicked = false;
+                    }
+                    targetOffset = transform.position.x;
+                    target.position = transform.position;
+                    rb.velocity = new Vector3(rb.velocity.x * (1f - horizontalDampener * Time.deltaTime), rb.velocity.y, rb.velocity.z);//extra dampener when not controlling the player
                 }
             }
             else
             {
+
                 targetOffset = transform.position.x;
                 target.position = transform.position;
             }
-            if (Input.GetMouseButtonUp(0))//on release
-            {
-                targetOffset = transform.position.x;
-                target.position = transform.position;
-                TryToJump();
-            }
-            else
-            {
-                rb.velocity = new Vector3(rb.velocity.x * (1f - horizontalDampener * Time.deltaTime), rb.velocity.y, rb.velocity.z);
-            }
+
 
             lastMousePos = Input.mousePosition;
             if (transform.position.y < 0f)
