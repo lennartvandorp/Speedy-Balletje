@@ -432,11 +432,12 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 3d73f99224a4b524b8128fd0541cdee1, type: 3}
     volume: 0.2
     pitch: 100000000
-    source: {fileID: 0}
   jumpSound:
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 1
+    clips:
+    - {fileID: 8300000, guid: 285504255bf3ffb42814e676eb1492ab, type: 3}
+    - {fileID: 8300000, guid: a21bddb7e330ab84bb7057537cc2c023, type: 3}
     source: {fileID: 0}
 --- !u!114 &7907479315144739314
 MonoBehaviour:
