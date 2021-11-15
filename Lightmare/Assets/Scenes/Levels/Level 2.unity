@@ -1968,6 +1968,10 @@ PrefabInstance:
       propertyPath: jumpSound.clips.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 43328326a2f5ac34098e03ea2a022a97, type: 3}
+    - target: {fileID: 2955933899880427110, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3926129282084171870, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2016,6 +2020,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Core
       objectReference: {fileID: 0}
+    - target: {fileID: 3926129282357387000, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3926129282357387002, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
       propertyPath: m_Material
       value: 
@@ -2027,10 +2035,6 @@ PrefabInstance:
     - target: {fileID: 3926129282357387003, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
       propertyPath: m_LocalPosition.y
       value: -9.741731
-      objectReference: {fileID: 0}
-    - target: {fileID: 5631873948559825192, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
-      propertyPath: EmissionModule.rateOverDistance.scalar
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6943203189502501116, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
       propertyPath: emissionMult
