@@ -4942,6 +4942,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subject: {fileID: 0}
-  maxFOVIncrease: 35
-  FOVMult: 0.4
+  maxFOVIncrease: 45
+  FOVMult: 0.5
   maxChangePerSec: 0

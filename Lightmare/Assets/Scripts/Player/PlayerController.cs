@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float normalMaxSpeed;
     [SerializeField] float airMaxSpeed;
     [SerializeField] float clampOffset;
-    [SerializeField] float acceleration;//the acceleration in the z direction
+    [SerializeField] float normalAcceleration;//the acceleration in the z direction
+    [SerializeField] float boostedAcceleration;
     [SerializeField] float stunTime;
     [SerializeField] float horizontalDampener;
 
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
     float finishDrag = 2;
     float normalDrag;
     float maxSpeed;
+    float acceleration;
     SphereCollider collider;
 
     bool active;
@@ -51,12 +53,14 @@ public class PlayerController : MonoBehaviour
         normalDrag = rb.drag;
         collider = GetComponent<SphereCollider>();
         maxSpeed = normalMaxSpeed;
-
+        acceleration = normalAcceleration;
         #region events
         GameManager.Instance.failGame += ResetPosition;
         GameManager.Instance.finishGame += Finish;
         GameManager.Instance.restart += ResetPosition;
         GameManager.Instance.stunPlayer += GetStunned;
+        GameManager.Instance.startBoost += StartBoost;
+        GameManager.Instance.stopBoost += StopBoost;
         #endregion
     }
 
@@ -173,5 +177,22 @@ public class PlayerController : MonoBehaviour
     {
         rb.AddForce(new Vector3(0f, jumpForce * rb.mass, 0f));
         GameManager.Instance.OnJump();
+    }
+
+
+    /// <summary>
+    /// Sets the player in a boosted state
+    /// </summary>
+    void StartBoost()
+    {
+        acceleration = boostedAcceleration;
+    }
+
+    /// <summary>
+    /// Sets the player in a not boosted state
+    /// </summary>
+    void StopBoost()
+    {
+        acceleration = normalAcceleration;
     }
 }

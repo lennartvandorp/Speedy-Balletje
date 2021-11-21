@@ -5,9 +5,10 @@ using UnityEngine;
 public class CameraBehaviour : MonoBehaviour
 {
     [SerializeField] Transform player;
-    [SerializeField] bool cameraMoveX;
+    float lerpSpeed = 50f;
 
     Vector3 standardOffset;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,13 +18,9 @@ public class CameraBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (cameraMoveX)
-        {
-            transform.position = standardOffset + player.position;
-        }
-        else
-        {
-            transform.position = new Vector3(0f, standardOffset.y + player.position.y, standardOffset.z + player.position.z);
-        }
+        Vector3 targetPos = player.position + standardOffset;
+        Vector3 velocity = targetPos - transform.position;
+        transform.position += velocity * Time.deltaTime * lerpSpeed;
+        transform.position = new Vector3(targetPos.x, transform.position.y, transform.position.z);
     }
 }
