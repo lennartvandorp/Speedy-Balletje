@@ -10,12 +10,15 @@ public class AutoUVMapping : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mesh = GetComponent<Mesh>();
+        mesh = GetComponent<MeshFilter>().mesh;
+        for (int i = 0; i < mesh.vertices.Length; i++)
+        {
+            Vector3 relativePos = Vector3.Scale(mesh.vertices[i], transform.lossyScale);
+            Debug.Log(relativePos);
+        }
+
+        GetComponent<MeshFilter>().mesh = mesh;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
