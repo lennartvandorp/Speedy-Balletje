@@ -9,7 +9,6 @@ public class Senses : MonoBehaviour
     SphereCollider collider;
     PlayerController controller;
 
-    float groundDist = .05f;
 
     [HideInInspector] public float GetPlayerZSpeed
     {
@@ -18,6 +17,25 @@ public class Senses : MonoBehaviour
             return controller.getCurrentSpeed();
         }
     }
+
+
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        collider = GetComponent<SphereCollider>();
+        controller = GetComponent<PlayerController>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        SetIsTouchingGround();
+        controller.IsTouchingLeftWallSetter = touchingWallLeft;
+    }
+
+    #region touching ground
+    float groundDist = .1f;
 
     /// <summary>
     /// actually saves the value, don't directly modify
@@ -32,24 +50,11 @@ public class Senses : MonoBehaviour
         }
         get { return touchingGround; }
     }
-    [HideInInspector] public bool IsTouchingGround
+    [HideInInspector]
+    public bool IsTouchingGround
     {
         get { return touchingGround; }
     }
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        collider = GetComponent<SphereCollider>();
-        controller = GetComponent<PlayerController>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        SetIsTouchingGround();
-    }
-
     /// <summary>
     /// IsTouchingGround
     /// </summary>
@@ -67,6 +72,27 @@ public class Senses : MonoBehaviour
             isTouchingGround = false;
         }
     }
+    #endregion
 
-    
+    #region touching wall
+    bool touchingWallLeft {
+        get
+        {
+            Ray ray = new Ray(transform.position + new Vector3(-collider.radius + 0.05f, 0f, 0f), -Vector3.right);
+            RaycastHit hit;
+            Physics.Raycast(ray, out hit, groundDist + .05f);
+            Debug.DrawRay(ray.origin, ray.direction * (groundDist + 0.05f), Color.blue);
+            if (hit.collider && !hit.collider.isTrigger)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
+
+    #endregion
 }

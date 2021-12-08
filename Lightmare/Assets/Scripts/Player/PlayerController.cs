@@ -42,6 +42,11 @@ public class PlayerController : MonoBehaviour
         set { isTouchingGround = value; }
     }
 
+    bool isTouchingLeftWall;
+    public bool IsTouchingLeftWallSetter {
+        set { isTouchingLeftWall = value; }
+    }
+
     public float getCurrentSpeed() { return rb.velocity.z; }
 
 
@@ -92,7 +97,7 @@ public class PlayerController : MonoBehaviour
                     {
                         mouseMovement = Input.mousePosition - lastMousePos;
                         targetOffset += mouseMovement.x * sensitivity;
-                        targetOffset = Mathf.Clamp(targetOffset, -clampOffset, clampOffset);//Clamps the position of the offset
+                        //targetOffset = Mathf.Clamp(targetOffset, -clampOffset, clampOffset);//Clamps the position of the offset
                         target.position = new Vector3(targetOffset, transform.position.y, transform.position.z);
                         rb.velocity = new Vector3(Mathf.Clamp((target.position.x - transform.position.x) * 10f, -maxSpeed, maxSpeed),
                         rb.velocity.y, rb.velocity.z);//Moves the character
@@ -112,11 +117,13 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-
-                targetOffset = transform.position.x;
-                target.position = transform.position;
+                ResetTarget();
             }
 
+            if(targetOffset < 0 && isTouchingLeftWall)
+            {
+                ResetTarget();
+            }
 
             lastMousePos = Input.mousePosition;
             if (transform.position.y < 0f)
@@ -124,6 +131,14 @@ public class PlayerController : MonoBehaviour
                 GameManager.Instance.Fail();
             }
         }
+    }
+
+    /// <summary>
+    /// Makes the character stop moving when fitting. 
+    /// </summary>
+    void ResetTarget() {
+        targetOffset = transform.position.x;
+        target.position = transform.position;
     }
 
     void StartGame()
