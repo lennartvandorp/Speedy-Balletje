@@ -5113,14 +5113,6 @@ PrefabInstance:
       propertyPath: jumpSound.clip
       value: 
       objectReference: {fileID: 8300000, guid: a21bddb7e330ab84bb7057537cc2c023, type: 3}
-    - target: {fileID: 1019616239874925000, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
-      propertyPath: jumpSound.volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1019616239874925000, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
-      propertyPath: jumpSound.clips.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 43328326a2f5ac34098e03ea2a022a97, type: 3}
     - target: {fileID: 2955933899880427110, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
       propertyPath: m_IsActive
       value: 0

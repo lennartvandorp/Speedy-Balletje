@@ -32,14 +32,13 @@ public class Senses : MonoBehaviour
     {
         SetIsTouchingGround();
         controller.IsTouchingLeftWallSetter = touchingWallLeft;
+        controller.IsTouchingRightWallSetter = touchingWallRight;
     }
 
     #region touching ground
     float groundDist = .1f;
 
-    /// <summary>
-    /// actually saves the value, don't directly modify
-    /// </summary>
+    
     bool touchingGround;
     bool isTouchingGround
     {
@@ -79,6 +78,24 @@ public class Senses : MonoBehaviour
         get
         {
             Ray ray = new Ray(transform.position + new Vector3(-collider.radius + 0.05f, 0f, 0f), -Vector3.right);
+            RaycastHit hit;
+            Physics.Raycast(ray, out hit, groundDist + .05f);
+            Debug.DrawRay(ray.origin, ray.direction * (groundDist + 0.05f), Color.blue);
+            if (hit.collider && !hit.collider.isTrigger)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+    bool touchingWallRight
+    {
+        get
+        {
+            Ray ray = new Ray(transform.position + new Vector3(collider.radius - 0.05f, 0f, 0f), Vector3.right);
             RaycastHit hit;
             Physics.Raycast(ray, out hit, groundDist + .05f);
             Debug.DrawRay(ray.origin, ray.direction * (groundDist + 0.05f), Color.blue);

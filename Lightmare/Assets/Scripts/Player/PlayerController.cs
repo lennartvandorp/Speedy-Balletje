@@ -47,6 +47,12 @@ public class PlayerController : MonoBehaviour
         set { isTouchingLeftWall = value; }
     }
 
+    bool isTouchingRightWall;
+    public bool IsTouchingRightWallSetter
+    {
+        set { isTouchingRightWall = value; }
+    }
+
     public float getCurrentSpeed() { return rb.velocity.z; }
 
 
@@ -120,7 +126,7 @@ public class PlayerController : MonoBehaviour
                 ResetTarget();
             }
 
-            if(targetOffset < 0 && isTouchingLeftWall)
+            if((targetOffset < 0 && isTouchingLeftWall) || (targetOffset > 0 && isTouchingRightWall))
             {
                 ResetTarget();
             }
