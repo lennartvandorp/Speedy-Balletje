@@ -10,6 +10,7 @@ public class BoostParticlesController : MonoBehaviour
     {
         particles = GetComponent<ParticleSystem>();
         GameManager.Instance.startBoost += PlayParticles;
+        GameManager.Instance.landBoost += PlayParticles;
     }
 
     void PlayParticles()

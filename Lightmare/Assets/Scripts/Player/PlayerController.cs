@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class PlayerController : MonoBehaviour
+using ObserverPattern;
+public class PlayerController : Observer
 {
 
     [SerializeField] Transform target;
@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float boostedAcceleration;
     [SerializeField] float stunTime;
     [SerializeField] float horizontalDampener;
+    [SerializeField] float landBoostTime;
 
     [Header("Jump")]
     [SerializeField] float jumpForce;
@@ -72,6 +73,7 @@ public class PlayerController : MonoBehaviour
         GameManager.Instance.stunPlayer += GetStunned;
         GameManager.Instance.startBoost += StartBoost;
         GameManager.Instance.stopBoost += StopBoost;
+        GameManager.Instance.landBoost += TimedBoost;
         #endregion
     }
 
@@ -113,7 +115,7 @@ public class PlayerController : MonoBehaviour
                 {
                     if (wasClicked)
                     {
-                        TryToJump();
+                        //TryToJump();//Removed since the jump doesn't fit the game design anymore
                         wasClicked = false;
                     }
                     targetOffset = transform.position.x;
@@ -186,7 +188,7 @@ public class PlayerController : MonoBehaviour
         isStunned = false;
     }
 
-    void TryToJump()
+    /*void TryToJump()
     {
         if (isTouchingGround)
         {
@@ -198,6 +200,18 @@ public class PlayerController : MonoBehaviour
     {
         rb.AddForce(new Vector3(0f, jumpForce * rb.mass, 0f));
         GameManager.Instance.OnJump();
+    }*/
+
+    public void TimedBoost()
+    {
+        StartCoroutine(TimedBoostCoroutine(landBoostTime));
+    }
+
+    private IEnumerator TimedBoostCoroutine(float duration) {
+        StartBoost();
+        yield return new WaitForSeconds(duration);
+        StopBoost();
+        yield return null;
     }
 
 

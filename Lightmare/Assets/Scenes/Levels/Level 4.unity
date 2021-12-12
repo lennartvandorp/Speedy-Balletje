@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657594, g: 0.4964121, b: 0.57481736, a: 1}
+  m_IndirectSpecularColor: {r: 0.44863045, g: 0.4986837, b: 0.57567054, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1063,13 +1063,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251262567}
-  m_LocalRotation: {x: 0.42227778, y: 0.036371745, z: -0.016960422, w: 0.90557766}
+  m_LocalRotation: {x: 0.91923815, y: -0.05090954, z: 0.1267373, w: 0.36925197}
   m_LocalPosition: {x: 0, y: -6.9399986, z: 8.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 65222489}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: 4.6, z: 0}
+  m_LocalEulerAnglesHint: {x: 136.23, y: -15.7, z: 0}
 --- !u!108 &251262569
 Light:
   m_ObjectHideFlags: 0
@@ -5165,14 +5165,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Core
       objectReference: {fileID: 0}
+    - target: {fileID: 3926129282357386948, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
+      propertyPath: sensitivity
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 3926129282357386948, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
+      propertyPath: landBoostTime
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 3926129282357386948, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
+      propertyPath: boostedAcceleration
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 3926129282357387000, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
       propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3926129282357387000, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
+      propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3926129282357387002, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: 938324d4ff6b05140b687733452ef868, type: 2}
+    - target: {fileID: 3926129282741348880, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4282039499953751749, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
       value: 50
@@ -6211,6 +6231,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2216300767379839836, guid: 231db0e7e4ff0ad4c8aca05a1e7d1459, type: 3}
   m_PrefabInstance: {fileID: 1582395706}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1648406370 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 208913382949116355, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
+  m_PrefabInstance: {fileID: 1268540649}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1648406372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648406370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81bcce1fb196eec4daf3913a15206b09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1670258793
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7918,6 +7955,24 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &2037830153 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926129282357387001, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
+  m_PrefabInstance: {fileID: 1268540649}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2037830154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037830153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6041cedeebf2724488b9c96587926e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToPress: 0.15
 --- !u!1001 &2041307530
 PrefabInstance:
   m_ObjectHideFlags: 0

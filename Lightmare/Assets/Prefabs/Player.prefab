@@ -404,6 +404,7 @@ MonoBehaviour:
   boostedAcceleration: 100
   stunTime: 0.15
   horizontalDampener: 5
+  landBoostTime: 0
   jumpForce: 350
 --- !u!114 &4559829983371843596
 MonoBehaviour:

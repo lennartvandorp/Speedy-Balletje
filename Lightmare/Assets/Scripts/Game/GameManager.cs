@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public event Action onJump;
     public event Action startBoost;
     public event Action stopBoost;
+    public event Action landBoost;
     // Start is called before the first frame update
     void Awake()
     {
@@ -71,5 +72,10 @@ public class GameManager : MonoBehaviour
     public void StopBoost()
     {
         stopBoost();
+    }
+
+    public void LandBoost()
+    {
+        landBoost();
     }
 }
