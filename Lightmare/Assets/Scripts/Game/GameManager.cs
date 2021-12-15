@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public event Action failGame;
     public event Action restart;
     public event Action stunPlayer;
+    public event Action stopStun;
     public event Action onJump;
     public event Action startBoost;
     public event Action stopBoost;

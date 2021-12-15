@@ -32,7 +32,7 @@ public class LevelTimer : MonoBehaviour
     }
     void DisplayTime() 
     {
-        tmp.text = (Mathf.Round(currentTime * 100f) / 100) + " s";
+        tmp.text = (Mathf.Round(currentTime * 10f) / 10) + " s";
         
     }
 }

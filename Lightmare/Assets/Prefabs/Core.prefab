@@ -679,6 +679,7 @@ GameObject:
   - component: {fileID: 5623841019289906369}
   - component: {fileID: 7490103008535553020}
   - component: {fileID: 1400216230069688886}
+  - component: {fileID: 269812732315765918}
   m_Layer: 5
   m_Name: LevelTime
   m_TagString: Untagged
@@ -802,6 +803,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &269812732315765918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208913382949116355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81bcce1fb196eec4daf3913a15206b09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &682532877276786721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,6 +1054,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 9109048071779687096, guid: 39d31f1b9d7fd754cb355316843165ed, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 39d31f1b9d7fd754cb355316843165ed, type: 3}
+--- !u!54 &3926129282357387000 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 4559829983371843635, guid: 39d31f1b9d7fd754cb355316843165ed, type: 3}
+  m_PrefabInstance: {fileID: 665315525788042955}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3926129282357387003 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4559829983371843632, guid: 39d31f1b9d7fd754cb355316843165ed, type: 3}
@@ -1049,11 +1067,6 @@ Transform:
 --- !u!1 &3926129282357387001 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4559829983371843634, guid: 39d31f1b9d7fd754cb355316843165ed, type: 3}
-  m_PrefabInstance: {fileID: 665315525788042955}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &3926129282357387000 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 4559829983371843635, guid: 39d31f1b9d7fd754cb355316843165ed, type: 3}
   m_PrefabInstance: {fileID: 665315525788042955}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2001254407292391050

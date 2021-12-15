@@ -27,4 +27,11 @@ public class Obstacle : MonoBehaviour
             impactParticles.transform.position = collision.GetContact(0).point;
         }
     }
+    private void OnCollisionExit(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+
+        }
+    }
 }

@@ -163,6 +163,7 @@ public class PlayerController : Observer
         rb.velocity = Vector3.zero;
         rb.drag = normalDrag;
         active = true;
+        ResetTarget();
     }
 
     void Finish()
