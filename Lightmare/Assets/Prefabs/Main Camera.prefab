@@ -4957,5 +4957,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48549ca36c29e404a998e78b38520413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standardShakeIntensity: 0.5
+  standardShakeIntensity: 0.4
   shakeReduction: 1
