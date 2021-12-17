@@ -13,6 +13,8 @@ public class LevelTimer : MonoBehaviour
     void Start()
     {
         tmp = GetComponent<TextMeshProUGUI>();
+        GameManager.Instance.restart += ResetTimer;
+        GameManager.Instance.failGame += ResetTimer;
     }
 
     // Update is called once per frame

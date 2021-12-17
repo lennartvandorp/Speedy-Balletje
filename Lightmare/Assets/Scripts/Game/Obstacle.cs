@@ -23,6 +23,7 @@ public class Obstacle : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             GameManager.Instance.StunPlayer();
+            GameManager.Instance.StartScreenShake(collision.impactForceSum.magnitude /100f);
             GameObject impactParticles = Instantiate(GameManager.Instance.ImpactParticles);
             impactParticles.transform.position = collision.GetContact(0).point;
         }

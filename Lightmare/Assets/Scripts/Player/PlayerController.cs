@@ -175,6 +175,7 @@ public class PlayerController : Observer
     void GetStunned()
     {
         StartCoroutine(StunPlayer(stunTime));
+
     }
 
     /// <summary>

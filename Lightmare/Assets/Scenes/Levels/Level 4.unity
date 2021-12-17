@@ -5165,18 +5165,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Core
       objectReference: {fileID: 0}
-    - target: {fileID: 3926129282357386948, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
-      propertyPath: sensitivity
-      value: 0.015
-      objectReference: {fileID: 0}
-    - target: {fileID: 3926129282357386948, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
-      propertyPath: landBoostTime
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 3926129282357386948, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
-      propertyPath: boostedAcceleration
-      value: 70
-      objectReference: {fileID: 0}
     - target: {fileID: 3926129282357387000, guid: 63ad630d9a63c674ba72cd6f69a4bd9f, type: 3}
       propertyPath: m_Interpolate
       value: 1

@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public event Action startBoost;
     public event Action stopBoost;
     public event Action landBoost;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -78,5 +79,22 @@ public class GameManager : MonoBehaviour
     public void LandBoost()
     {
         landBoost();
+    }
+
+
+
+    CameraShake cameraShake;
+    public void StartScreenShake()
+    {
+        cameraShake.StartDynamicCameraShake();
+    }
+    public void StartScreenShake(float intensity)
+    {
+        cameraShake.StartDynamicCameraShake(intensity);
+    }
+
+    public void SetCameraShake(CameraShake _cameraShake)
+    {
+        cameraShake = _cameraShake;
     }
 }

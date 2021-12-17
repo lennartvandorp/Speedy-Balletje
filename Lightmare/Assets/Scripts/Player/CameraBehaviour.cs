@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraBehaviour : MonoBehaviour
 {
     [SerializeField] Transform player;
-    float lerpSpeed = 50f;
+    float lerpSpeed = 50;
 
     Vector3 standardOffset;
 
@@ -21,6 +19,10 @@ public class CameraBehaviour : MonoBehaviour
         Vector3 targetPos = player.position + standardOffset;
         Vector3 velocity = targetPos - transform.position;
         transform.position += velocity * Time.deltaTime * lerpSpeed;
-        transform.position = new Vector3(targetPos.x, transform.position.y, transform.position.z);
+        if(velocity.magnitude * Time.deltaTime * lerpSpeed > velocity.magnitude)
+        {
+            transform.position = targetPos;//To counteract a feedback loop where the camera shoots off into the distance. 
+        }
+        //transform.position = new Vector3(targetPos.x, transform.position.y, transform.position.z);
     }
 }
