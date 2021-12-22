@@ -21,4 +21,8 @@ public class SceneChanger : MonoBehaviour
     {
         SceneManager.LoadScene(levels[level]);
     }
+    public void GotoHome()
+    {
+        SceneManager.LoadScene("World Select");
+    }
 }

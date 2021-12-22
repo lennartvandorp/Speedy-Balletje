@@ -4958,4 +4958,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standardShakeIntensity: 0.4
-  shakeReduction: 1
+  shakeReduction: 0.5
