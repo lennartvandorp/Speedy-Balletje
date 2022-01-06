@@ -9,7 +9,7 @@ namespace Database
 {
     public class DbHighScore : MonoBehaviour
     {
-        public static string tableName = "level_times";
+        public static string tableName = "time_scores";
         string connection;
         public static string levelFieldName = "level_name";
         public static string timeFieldName = "time";
@@ -30,7 +30,10 @@ namespace Database
             dbcmd = dbCon.CreateCommand();
             string q_createTable =
                 "CREATE TABLE IF NOT EXISTS " + tableName +
-                " (id INTEGER PRIMARY KEY, " + levelFieldName + "STRING" + timeFieldName + " FLOAT )";
+                " (id INTEGER PRIMARY KEY, " + levelFieldName + " STRING, " + timeFieldName + " FLOAT )";
+
+            dbcmd.CommandText = q_createTable;
+            dbcmd.ExecuteReader();
 
             InsertIntoDatabase(new LevelTimeData(SceneManager.GetActiveScene().ToString(), 1f));
 
@@ -45,8 +48,7 @@ namespace Database
             {
                 Debug.Log("id: " + reader[0].ToString());
                 Debug.Log(levelFieldName + ": " + reader[1].ToString());
-                Debug.Log(timeFieldName + ": " + reader[1].ToString());
-
+                Debug.Log(timeFieldName + ": " + reader[2].ToString());
             }
         }
 
@@ -57,7 +59,6 @@ namespace Database
             int maxId = 
             string q_insertTime = "INSERT INTO " + tableName + " ("  + */
             InsertIntoDatabase(new LevelTimeData(levelName, time));
-
         }
         void InsertIntoDatabase(LevelTimeData data)
         {
