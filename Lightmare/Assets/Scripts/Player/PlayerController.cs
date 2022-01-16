@@ -75,6 +75,7 @@ public class PlayerController : Observer
         GameManager.Instance.stopBoost += StopBoost;
         GameManager.Instance.landBoost += TimedBoost;
         #endregion
+
     }
 
     // Update is called once per frame
