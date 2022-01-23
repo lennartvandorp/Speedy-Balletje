@@ -8,33 +8,44 @@ public class LevelTimer : MonoBehaviour
     TextMeshProUGUI tmp;
 
     float currentTime;
-    bool isCounting;
+    bool isCounting = true;
     // Start is called before the first frame update
     void Start()
     {
         tmp = GetComponent<TextMeshProUGUI>();
         GameManager.Instance.restart += ResetTimer;
         GameManager.Instance.failGame += ResetTimer;
+        GameManager.Instance.finishGame += StopTimer;
     }
 
     // Update is called once per frame
     void Update()
     {
-        CountTime();
+        if (isCounting)
+        {
+            CountTime();
+        }
         DisplayTime();
     }
 
-    void ResetTimer() {
+    void ResetTimer()
+    {
         currentTime = 0f;
     }
 
-    void CountTime() 
+    void CountTime()
     {
         currentTime += Time.deltaTime;
     }
-    void DisplayTime() 
+    void DisplayTime()
     {
         tmp.text = (Mathf.Round(currentTime * 10f) / 10) + " s";
-        
+
+    }
+
+    void StopTimer()
+    {
+        //todo: Database implementation of adding the time to it
+        isCounting = false;
     }
 }
