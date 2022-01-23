@@ -22,6 +22,12 @@ public class Obstacle : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            Debug.Log(collision.impactForceSum.magnitude);
+            if(collision.impactForceSum.magnitude >= 60)
+            {
+                collision.rigidbody.velocity -= new Vector3(collision.rigidbody.velocity.x, 0, 0);
+                this.gameObject.active = false;
+            }
             GameManager.Instance.StunPlayer();
             GameManager.Instance.StartScreenShake(collision.impactForceSum.magnitude / screenshakeDivider);//activates the screen shake
             GameObject impactParticles = Instantiate(GameManager.Instance.ImpactParticles);
