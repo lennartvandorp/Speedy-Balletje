@@ -378,7 +378,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4559829983371843634}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 938324d4ff6b05140b687733452ef868, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -398,13 +398,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 4559829982587844133}
   sensitivity: 0.01
-  normalMaxSpeed: 15
-  airMaxSpeed: 7
+  normalMaxHorizontalSpeed: 15
+  airMaxHorizontalSpeed: 7
   clampOffset: 2
   normalAcceleration: 4
   boostedAcceleration: 100
   stunTime: 0.15
-  horizontalDampener: 1
+  horizontalDampener: 0
   landBoostTime: 0
   jumpForce: 350
 --- !u!114 &4559829983371843596
