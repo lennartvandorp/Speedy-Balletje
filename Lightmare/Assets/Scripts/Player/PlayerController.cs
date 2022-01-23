@@ -7,8 +7,8 @@ public class PlayerController : Observer
 
     [SerializeField] Transform target;
     [SerializeField] float sensitivity;
-    [SerializeField] float normalMaxSpeed;
-    [SerializeField] float airMaxSpeed;
+    [SerializeField] float normalMaxHorizontalSpeed;
+    [SerializeField] float airMaxHorizontalSpeed;
     [SerializeField] float clampOffset;
     [SerializeField] float normalAcceleration;//the acceleration in the z direction
     [SerializeField] float boostedAcceleration;
@@ -64,7 +64,7 @@ public class PlayerController : Observer
         StartGame();//remove when events are properly implemented
         normalDrag = rb.drag;
         collider = GetComponent<SphereCollider>();
-        maxSpeed = normalMaxSpeed;
+        maxSpeed = normalMaxHorizontalSpeed;
         acceleration = normalAcceleration;
         #region events
         GameManager.Instance.failGame += ResetPosition;
@@ -85,9 +85,9 @@ public class PlayerController : Observer
         {
             if (!isTouchingGround)//changes the steering speed based on wether the player is in the air
             {
-                maxSpeed = airMaxSpeed;
+                maxSpeed = airMaxHorizontalSpeed;
             }
-            else { maxSpeed = normalMaxSpeed; }
+            else { maxSpeed = normalMaxHorizontalSpeed; }
 
 
             rb.AddForce(new Vector3(0f, 0f, acceleration * 100f * rb.mass * Time.deltaTime));
@@ -138,7 +138,7 @@ public class PlayerController : Observer
             if (transform.position.y < 0f)
             {
                 GameManager.Instance.Fail();
-            }
+            }//On fail for the player
         }
     }
 
