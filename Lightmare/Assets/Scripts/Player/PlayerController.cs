@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ObserverPattern;
+using UnityEngine.Analytics;
+using UnityEngine.SceneManagement;
+
 public class PlayerController : Observer
 {
 
@@ -75,6 +78,12 @@ public class PlayerController : Observer
         GameManager.Instance.stopBoost += StopBoost;
         GameManager.Instance.landBoost += TimedBoost;
         #endregion
+
+        AnalyticsResult result = Analytics.CustomEvent(
+            "StartLevel",
+            Vector3.zero
+            );
+        Debug.Log("Analytics " + result);
 
     }
 
