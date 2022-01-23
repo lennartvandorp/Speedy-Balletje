@@ -62,9 +62,11 @@ namespace Database
         }
         void InsertIntoDatabase(LevelTimeData data)
         {
-            string q_Insert = "INSERT INTO" + tableName + "(" + levelFieldName + ", " + timeFieldName + ")" +
+            IDbCommand cmnd = dbCon.CreateCommand();
+            string q_Insert = "INSERT INTO" + tableName + "( 1, " + levelFieldName + ", " + timeFieldName + ")" +
                 "VALUES (" + data.levelName + ", " + data.levelTime + ")";
-
+            cmnd.CommandText = q_Insert;
+            cmnd.ExecuteNonQuery();
         }
         float GetLowestTimeFromLevel(string level)
         {
