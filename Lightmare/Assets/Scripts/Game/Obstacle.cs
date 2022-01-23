@@ -5,6 +5,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     float screenshakeDivider = 150f;
+    int neededForce = 60;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,7 @@ public class Obstacle : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log(collision.impactForceSum.magnitude);
-            if(collision.impactForceSum.magnitude >= 60)
+            if(collision.impactForceSum.magnitude >= neededForce)
             {
                 collision.rigidbody.velocity -= new Vector3(collision.rigidbody.velocity.x, 0, 0);
                 this.gameObject.active = false;
