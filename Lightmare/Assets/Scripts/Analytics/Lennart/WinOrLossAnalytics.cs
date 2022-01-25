@@ -1,18 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
+using UnityEngine.SceneManagement;
 
-public class WinOrLossAnalytics : MonoBehaviour
+namespace MyAnalytics
 {
-
-    // Start is called before the first frame update
-    void Start()
+    public class WinOrLossAnalytics : MonoBehaviour
     {
-        GameManager.Instance.finishGame += 
-    }
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            GameManager.Instance.finishGame += OnWin;
+            GameManager.Instance.failGame += OnFail;
+        }
 
 
-    void OnWin() {
-        
+        void OnWin()
+        {
+            AnalyticsResult result = Analytics.CustomEvent("LevelResult", new Dictionary<string, object> {
+            {SceneManager.GetActiveScene().name, 1 }
+            }
+                );
+        }
+
+        private void OnFail()
+        {
+            AnalyticsResult result = Analytics.CustomEvent("LevelResult", new Dictionary<string, object> {
+            {SceneManager.GetActiveScene().name, 0 } 
+            
+            });
+        }
     }
 }
