@@ -19,7 +19,7 @@ namespace MyAnalytics
 
         void OnWin()
         {
-            AnalyticsResult result = Analytics.CustomEvent("LevelResult", new Dictionary<string, object> {
+            AnalyticsResult result = Analytics.CustomEvent("levelResult", new Dictionary<string, object> {
             {SceneManager.GetActiveScene().name, 1 }
             }
                 );
@@ -27,7 +27,7 @@ namespace MyAnalytics
 
         private void OnFail()
         {
-            AnalyticsResult result = Analytics.CustomEvent("LevelResult", new Dictionary<string, object> {
+            AnalyticsResult result = Analytics.CustomEvent("levelResult", new Dictionary<string, object> {
             {SceneManager.GetActiveScene().name, 0 } 
             
             });
