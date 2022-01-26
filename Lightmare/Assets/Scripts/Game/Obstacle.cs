@@ -5,7 +5,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     float screenshakeDivider = 150f;
-    int neededForce = 60;
+    int neededForce = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +28,7 @@ public class Obstacle : MonoBehaviour
             {
                 collision.rigidbody.velocity -= new Vector3(collision.rigidbody.velocity.x, 0, 0);
                 this.gameObject.active = false;
+                RestartHelper.DestroyedObject.Add(this.gameObject);
             }
             GameManager.Instance.StunPlayer();
             GameManager.Instance.StartScreenShake(collision.impactForceSum.magnitude / screenshakeDivider);//activates the screen shake
