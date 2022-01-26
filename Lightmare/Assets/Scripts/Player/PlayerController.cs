@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : Observer
 {
-
     [SerializeField] Transform target;
     [SerializeField] float sensitivity;
     [SerializeField] float normalMaxHorizontalSpeed;
