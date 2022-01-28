@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UI/World 2.unity
     guid: 20ebf9d9e3b158d47afdb2bb25855ac1
+  - enabled: 1
+    path: Assets/Scenes/ProLevels/ProLevel 2.unity
+    guid: bb817a389428e3043a4e42654ea5052d
   m_configObjects: {}

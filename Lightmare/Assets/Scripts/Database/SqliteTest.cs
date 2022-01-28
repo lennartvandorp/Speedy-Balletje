@@ -30,7 +30,8 @@ public class SqliteTest : MonoBehaviour
 
         // Insert values in table
         IDbCommand cmnd = dbcon.CreateCommand();
-        cmnd.CommandText = "INSERT INTO my_table (id, val) VALUES (3, 10)";
+        cmnd.CommandText = "INSERT INTO my_table (id, val) VALUES (5, 10)";
+        Debug.Log(cmnd.CommandText);
         cmnd.ExecuteNonQuery();
 
         // Read and print all values in table
@@ -40,11 +41,10 @@ public class SqliteTest : MonoBehaviour
         cmnd_read.CommandText = query;
         reader = cmnd_read.ExecuteReader();
 
-        while (reader.Read())
+        /*while (reader.Read())
         {
-            Debug.Log("id: " + reader[0].ToString());
-            Debug.Log("val: " + reader[1].ToString());
-        }
+            Debug.Log("id: " + reader[0].ToString() + "val: " + reader[1].ToString());
+        }*/
 
         // Close connection
         dbcon.Close();
