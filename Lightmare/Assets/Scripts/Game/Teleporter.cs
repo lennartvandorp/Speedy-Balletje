@@ -15,6 +15,7 @@ public class Teleporter : MonoBehaviour
         {
             Debug.Log("Teleport");
             other.transform.position = target.position;
+            other.GetComponent<PlayerController>().ResetTarget();
         }
     }
 }

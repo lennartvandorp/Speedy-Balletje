@@ -78,12 +78,6 @@ public class PlayerController : Observer
         GameManager.Instance.landBoost += TimedBoost;
         #endregion
 
-        AnalyticsResult result = Analytics.CustomEvent(
-            "StartLevel",
-            Vector3.zero
-            );
-        Debug.Log("Analytics " + result);
-
     }
 
     // Update is called once per frame
@@ -153,7 +147,7 @@ public class PlayerController : Observer
     /// <summary>
     /// Makes the character stop moving when fitting. 
     /// </summary>
-    void ResetTarget() {
+    public void ResetTarget() {
         targetOffset = transform.position.x;
         target.position = transform.position;
     }

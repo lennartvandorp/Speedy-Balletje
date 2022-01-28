@@ -3,7 +3,8 @@ using UnityEngine;
 public class CameraBehaviour : MonoBehaviour
 {
     [SerializeField] Transform player;
-    float lerpSpeed = 50;
+    float lerpSpeed = 30f;
+    float maxXVelocity = 2f;
 
     Vector3 standardOffset;
 
@@ -18,6 +19,10 @@ public class CameraBehaviour : MonoBehaviour
     {
         Vector3 targetPos = player.position + standardOffset;
         Vector3 velocity = targetPos - transform.position;
+        
+
+        if (velocity.x > maxXVelocity){velocity = new Vector3(maxXVelocity, velocity.y, velocity.z);}//So horizontal movement is better readable, especially when teleporting
+        else if(velocity.x < -maxXVelocity) { velocity = new Vector3(-maxXVelocity, velocity.y, velocity.z); }
         transform.position += velocity * Time.deltaTime * lerpSpeed;
         if(velocity.magnitude * Time.deltaTime * lerpSpeed > velocity.magnitude)
         {
