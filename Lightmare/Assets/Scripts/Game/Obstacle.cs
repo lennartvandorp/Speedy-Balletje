@@ -5,7 +5,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     float screenshakeDivider = 150f;
-    int neededForce = 10;
+    int neededForce = 60;
 
     // Start is called before the first frame update
     void Start()
