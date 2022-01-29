@@ -23,9 +23,13 @@ public class Obstacle : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            PlayerHitsObjectAnalytics.hitObjects++;
+            PlayerHitsObjectAnalytics.OnObjectHit(this.gameObject);
+                
             Debug.Log(collision.impactForceSum.magnitude);
             if(collision.impactForceSum.magnitude >= neededForce)
             {
+                PlayerHitsObjectAnalytics.OnObjectDestroyed(this.gameObject, collision.impactForceSum.magnitude);
                 collision.rigidbody.velocity -= new Vector3(collision.rigidbody.velocity.x, 0, 0);
                 this.gameObject.active = false;
                 RestartHelper.DestroyedObject.Add(this.gameObject);

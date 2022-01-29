@@ -10,6 +10,10 @@ public class RestartHelper : MonoBehaviour
     {
         GameManager.Instance.restart += respawn;
         GameManager.Instance.failGame += respawn;
+        GameManager.Instance.finishGame += PlayerHitsObjectAnalytics.TotalObjectsdestroyed;
+        GameManager.Instance.finishGame += PlayerHitsObjectAnalytics.TotalObjectsHit;
+        GameManager.Instance.failGame += PlayerHitsObjectAnalytics.TotalObjectsdestroyed;
+        GameManager.Instance.failGame += PlayerHitsObjectAnalytics.TotalObjectsHit;
     }
     static public void respawn()
     {
