@@ -50,7 +50,6 @@ public class GameManager : MonoBehaviour
     public void Fail()
     {
         failGame();
-        
     }
     public void Finish()
     {
