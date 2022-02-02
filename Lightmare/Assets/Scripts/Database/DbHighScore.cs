@@ -7,26 +7,21 @@ using UnityEngine.SceneManagement;
 
 namespace Database
 {
-    public class DbHighScore : MonoBehaviour
+    public class DbHighScore : TableManager
     {
         public static string tableName = "time_scores";
         string connection;
         public static string levelFieldName = "level_name";
         public static string timeFieldName = "time";
-        IDbConnection dbCon;
 
         // Start is called before the first frame update
-        void Start()
+        public override void Start()
         {
-            //create database
-            connection = "URI=file:" + Application.persistentDataPath + "/" + "My_Database";
+            base.Start();
+        }
 
-            //open connection
-            dbCon = new SqliteConnection(connection);
-            dbCon.Open();
-
-            #region create table
-            //create table if necessairy
+        public override void CreateTable()
+        {
             IDbCommand dbcmd;
             dbcmd = dbCon.CreateCommand();
             string q_createTable =
@@ -36,10 +31,10 @@ namespace Database
             dbcmd.CommandText = q_createTable;
             //Debug.Log(q_createTable);
             dbcmd.ExecuteReader();
-            #endregion
 
-            InsertIntoDatabase(new LevelTimeData(SceneManager.GetActiveScene().name, 1f));
+            Debug.Log("1");
 
+            base.CreateTable();
         }
 
 
@@ -73,42 +68,12 @@ namespace Database
             return null;
         }
 
-
-        /// <summary>
-        /// Searches the table for the highest key
-        /// </summary>
-        /// <returns>The highest key in the table +1</returns>
-        int GetNewKey()
-        {
-            int highestKey = 0;
-
-            IDbCommand cmnd_read = dbCon.CreateCommand();
-            IDataReader reader;
-            cmnd_read.CommandText = "SELECT id FROM " + tableName;
-            reader = cmnd_read.ExecuteReader();
-
-            while (reader.Read())
-            {
-                if (reader.GetInt32(0) > highestKey) { highestKey = reader.GetInt32(0); }
-            }
-            return highestKey + 1;
-
-        }
-
         /// <summary>
         /// Clears every value from the table
         /// </summary>
         void ClearTable()
         {
-            IDbCommand cmnd = dbCon.CreateCommand();
-            cmnd.CommandText = "DELETE FROM " + tableName;
-            cmnd.ExecuteNonQuery();
-        }
 
-
-        private void OnDestroy()
-        {
-            dbCon.Close();
         }
     }
 }

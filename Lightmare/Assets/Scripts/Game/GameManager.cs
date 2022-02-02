@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
+    public static string levelName;
 
     public static GameManager Instance
     {
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+        levelName = SceneManager.GetActiveScene().name;
     }
 
     public void Fail()
