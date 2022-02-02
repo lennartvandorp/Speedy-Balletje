@@ -23,7 +23,12 @@ namespace MyAnalytics
         {
             Instantiate<GameObject>(winPrefab);
 
-            AnalyticsResult result = Analytics.CustomEvent("levelWin", new Dictionary<string, object> { { "Level", SceneManager.GetActiveScene().name } });
+            /*AnalyticsResult result = Analytics.CustomEvent("levelWin", new Dictionary<string, object> 
+            { { "Level", SceneManager.GetActiveScene().name } });*/
+            AnalyticsResult result = Analytics.CustomEvent("levelResultAnalytic", new Dictionary<string, object>
+            { { "Level", SceneManager.GetActiveScene().name },
+               {"Result", 1 }
+            });
         }
 
         private void OnFail()
@@ -31,10 +36,14 @@ namespace MyAnalytics
             Instantiate<GameObject>(failPrefab);
 
 
-            AnalyticsResult result = Analytics.CustomEvent("levelFail", new Dictionary<string, object> {
+            /*AnalyticsResult result = Analytics.CustomEvent("levelFail", new Dictionary<string, object> {
             {"Level", SceneManager.GetActiveScene().name }
+            });*/
+
+            AnalyticsResult result = Analytics.CustomEvent("levelResultAnalytic", new Dictionary<string, object>
+            { { "Level", SceneManager.GetActiveScene().name },
+               {"Result", 1 }
             });
-            Debug.Log("on fail");
         }
 
 
