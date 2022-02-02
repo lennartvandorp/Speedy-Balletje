@@ -7,64 +7,52 @@ using UnityEngine.SceneManagement;
 
 namespace Database
 {
-    public class DbHighScore : MonoBehaviour
+    public class DbHighScore : TableManager
     {
         public static string tableName = "time_scores";
         string connection;
         public static string levelFieldName = "level_name";
         public static string timeFieldName = "time";
-        IDbConnection dbCon;
 
         // Start is called before the first frame update
-        void Start()
+        public override void Start()
         {
-            //create database
-            connection = "URI=file:" + Application.persistentDataPath + "/" + "My_Database";
+            base.Start();
+        }
 
-            //open connection
-            dbCon = new SqliteConnection(connection);
-            dbCon.Open();
-
-            //create table if necessairy
+        public override void CreateTable()
+        {
             IDbCommand dbcmd;
             dbcmd = dbCon.CreateCommand();
             string q_createTable =
                 "CREATE TABLE IF NOT EXISTS " + tableName +
-                " (id INTEGER PRIMARY KEY, " + levelFieldName + " STRING, " + timeFieldName + " FLOAT )";
+                " (id INTEGER PRIMARY KEY, " + levelFieldName + " STRING, " + timeFieldName + " INTEGER )";
 
             dbcmd.CommandText = q_createTable;
+            //Debug.Log(q_createTable);
             dbcmd.ExecuteReader();
 
-            InsertIntoDatabase(new LevelTimeData(SceneManager.GetActiveScene().ToString(), 1f));
+            Debug.Log("1");
 
-            // Read and print all values in table
-            IDbCommand cmnd_read = dbCon.CreateCommand();
-            IDataReader reader;
-            string query = "SELECT * FROM " + tableName;
-            cmnd_read.CommandText = query;
-            reader = cmnd_read.ExecuteReader();
-
-            while (reader.Read())
-            {
-                Debug.Log("id: " + reader[0].ToString());
-                Debug.Log(levelFieldName + ": " + reader[1].ToString());
-                Debug.Log(timeFieldName + ": " + reader[2].ToString());
-            }
+            base.CreateTable();
         }
 
+
+        //inserts the level name and time into the database
         public void InsertIntoDatabase(string levelName, float time)
         {
-            /*IDbCommand getMax = dbCon.CreateCommand();
-            getMax.CommandText = "SELECT MAX(id) FROM " + tableName;
-            int maxId = 
-            string q_insertTime = "INSERT INTO " + tableName + " ("  + */
             InsertIntoDatabase(new LevelTimeData(levelName, time));
         }
+
+        /// <summary>
+        /// Inserts the name and time into the database
+        /// </summary>
+        /// <param name="data"></param>
         void InsertIntoDatabase(LevelTimeData data)
         {
             IDbCommand cmnd = dbCon.CreateCommand();
-            string q_Insert = "INSERT INTO" + tableName + "( 1, " + levelFieldName + ", " + timeFieldName + ")" +
-                "VALUES (" + data.levelName + ", " + data.levelTime + ")";
+            string q_Insert = "INSERT INTO " + tableName + " ( id, " + levelFieldName + ", " + timeFieldName + ") " +
+                "VALUES (" + GetNewKey() + ", \"" + data.levelName + "\", " + (int)data.levelTime + ")";
             cmnd.CommandText = q_Insert;
             cmnd.ExecuteNonQuery();
         }
@@ -80,9 +68,12 @@ namespace Database
             return null;
         }
 
-        private void OnDestroy()
+        /// <summary>
+        /// Clears every value from the table
+        /// </summary>
+        void ClearTable()
         {
-            dbCon.Close();
+
         }
     }
 }

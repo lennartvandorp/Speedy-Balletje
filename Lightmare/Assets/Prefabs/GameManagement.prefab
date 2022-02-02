@@ -58,3 +58,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e22931707893d468a7f9cef35e4726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winPrefab: {fileID: 6798548683103622841, guid: e02401c611ac7bd4fafa6dd4569ed4af, type: 3}
+  failPrefab: {fileID: 6798548683103622841, guid: 84eb0f07e682bee4faa888b30ad3022d, type: 3}
