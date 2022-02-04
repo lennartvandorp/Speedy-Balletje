@@ -23,9 +23,9 @@ namespace MyAnalytics
         {
             Instantiate<GameObject>(winPrefab);
             AnalyticsResult result =
-                Analytics.CustomEvent("levelResultAnalytic", new Dictionary<string, object>
-            { { "Level", SceneManager.GetActiveScene().name },
-               {"Result", 1 }
+                Analytics.CustomEvent("levelResultAnalytic", new Dictionary<string, object>{
+                    { "Level", SceneManager.GetActiveScene().name },
+                    {"Result", 1 }
             });
             Debug.Log("result: " + result);
 
