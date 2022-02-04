@@ -35,5 +35,6 @@ public class SpeedAnalytics : MonoBehaviour
                 {"Level", SceneManager.GetActiveScene().name },
                 {"HighestSpeed", highestSpeed }
             });
+        Debug.Log("speed: " + result);
     }
 }

@@ -22,13 +22,13 @@ namespace MyAnalytics
         void OnWin()
         {
             Instantiate<GameObject>(winPrefab);
-
-            /*AnalyticsResult result = Analytics.CustomEvent("levelWin", new Dictionary<string, object> 
-            { { "Level", SceneManager.GetActiveScene().name } });*/
-            AnalyticsResult result = Analytics.CustomEvent("levelResultAnalytic", new Dictionary<string, object>
+            AnalyticsResult result =
+                Analytics.CustomEvent("levelResultAnalytic", new Dictionary<string, object>
             { { "Level", SceneManager.GetActiveScene().name },
                {"Result", 1 }
             });
+            Debug.Log("result: " + result);
+
         }
 
         private void OnFail()
@@ -40,10 +40,12 @@ namespace MyAnalytics
             {"Level", SceneManager.GetActiveScene().name }
             });*/
 
-            AnalyticsResult result = Analytics.CustomEvent("levelResultAnalytic", new Dictionary<string, object>
+            AnalyticsResult result =
+                Analytics.CustomEvent("levelResultAnalytic", new Dictionary<string, object>
             { { "Level", SceneManager.GetActiveScene().name },
-               {"Result", 1 }
+               {"Result", 0 }
             });
+            Debug.Log("result: " + result);
         }
 
 

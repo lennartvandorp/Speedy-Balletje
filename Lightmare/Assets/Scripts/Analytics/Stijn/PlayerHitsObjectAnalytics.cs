@@ -11,7 +11,7 @@ public class PlayerHitsObjectAnalytics : MonoBehaviour
 
     static public void OnObjectHit(GameObject obj)
     {
-        
+
         AnalyticsResult result = Analytics.CustomEvent("HitObject", new Dictionary<string, object> {
             {"Level", SceneManager.GetActiveScene().name},
             {"PositionX", obj.transform.position},
