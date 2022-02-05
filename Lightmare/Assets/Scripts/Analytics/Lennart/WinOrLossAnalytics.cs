@@ -8,8 +8,6 @@ namespace MyAnalytics
 {
     public class WinOrLossAnalytics : MonoBehaviour
     {
-        [SerializeField] GameObject winPrefab;
-        [SerializeField] GameObject failPrefab;
 
         // Start is called before the first frame update
         void Start()
@@ -21,26 +19,24 @@ namespace MyAnalytics
 
         void OnWin()
         {
-            Instantiate<GameObject>(winPrefab);
-            AnalyticsResult result =
-                Analytics.CustomEvent("levelResultAnalytic", new Dictionary<string, object>{
-                    { "Level", SceneManager.GetActiveScene().name },
-                    {"Result", 1 }
-            });
-            Debug.Log("result: " + result);
-
+            PushAnalytic("Win");
         }
 
         private void OnFail()
         {
-            Instantiate<GameObject>(failPrefab);
+            PushAnalytic("Fail");
+        }
+
+        void PushAnalytic(string outcome)
+        {
+            string levelName = SceneManager.GetActiveScene().name;
 
             AnalyticsResult result =
-                Analytics.CustomEvent("levelResultAnalytic", new Dictionary<string, object>
-            { { "Level", SceneManager.GetActiveScene().name },
-               {"Result", 2 }
+                Analytics.CustomEvent(levelName + "Result", new Dictionary<string, object>{
+                    {"Result", outcome }
             });
             Debug.Log("result: " + result);
+
         }
 
 

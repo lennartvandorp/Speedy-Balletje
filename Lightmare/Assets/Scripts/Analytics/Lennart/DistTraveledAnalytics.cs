@@ -20,8 +20,7 @@ public class DistTraveledAnalytics : MonoBehaviour
         float endDist = GameManager.Instance.Player.transform.position.z;
         float dist = endDist - startPos.z;
 
-        AnalyticsResult result = Analytics.CustomEvent("distOfDeathAnalytics", new Dictionary<string, object> { 
-            { "Level", SceneManager.GetActiveScene().name },
+        AnalyticsResult result = Analytics.CustomEvent(SceneManager.GetActiveScene().name + "distOfDeathAnalytics", new Dictionary<string, object> {
             {"Distance", dist }
         });
         Debug.Log("Dist: " + result);
