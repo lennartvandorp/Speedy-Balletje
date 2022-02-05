@@ -35,15 +35,10 @@ namespace MyAnalytics
         {
             Instantiate<GameObject>(failPrefab);
 
-
-            /*AnalyticsResult result = Analytics.CustomEvent("levelFail", new Dictionary<string, object> {
-            {"Level", SceneManager.GetActiveScene().name }
-            });*/
-
             AnalyticsResult result =
                 Analytics.CustomEvent("levelResultAnalytic", new Dictionary<string, object>
             { { "Level", SceneManager.GetActiveScene().name },
-               {"Result", 0 }
+               {"Result", 2 }
             });
             Debug.Log("result: " + result);
         }
