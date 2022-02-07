@@ -1115,10 +1115,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 3926129282084171870}
     m_Modifications:
     - target: {fileID: 4559829983371843599, guid: 39d31f1b9d7fd754cb355316843165ed, type: 3}
-      propertyPath: sensitivity
-      value: 0.015
-      objectReference: {fileID: 0}
-    - target: {fileID: 4559829983371843599, guid: 39d31f1b9d7fd754cb355316843165ed, type: 3}
       propertyPath: landBoostTime
       value: 0.03
       objectReference: {fileID: 0}
