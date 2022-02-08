@@ -7524,6 +7524,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelFinish
       objectReference: {fileID: 0}
+    - target: {fileID: 4201289911003157357, guid: 87afa6113f6205a4dbce38018ff111cb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4201289911003157357, guid: 87afa6113f6205a4dbce38018ff111cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 30.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87afa6113f6205a4dbce38018ff111cb, type: 3}
 --- !u!1 &1778038312
