@@ -8,11 +8,12 @@ public class SpeedAnalytics : MonoBehaviour
 {
     Rigidbody playerRb;
     float highestSpeed;
-    float averageSpeed;
-    float interval;
+    float averageSpeed = 0;
+    float interval = .2f;
     float speedCollect;
     float timeSpent;
-    float timesInter;
+    float timesInter = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -20,22 +21,23 @@ public class SpeedAnalytics : MonoBehaviour
         playerRb = GameManager.Instance.Player.GetComponent<Rigidbody>();
         GameManager.Instance.failGame += OnFail;
         GameManager.Instance.finishGame += OnWin;
-        timeSpent = Time.deltaTime;
-
     }
     private void Update()
     {
+
         if (playerRb.velocity.z > highestSpeed)
         {
             highestSpeed = playerRb.velocity.z;
         }
-        if (Time.deltaTime == interval)
-		{
+        timeSpent += Time.deltaTime;
+        if (timeSpent >= interval)
+        {
             speedCollect += playerRb.velocity.z;
             timeSpent = 0;
             timesInter++;
-		}
+        }
         averageSpeed = speedCollect / timesInter;
+
     }
 
     void OnFail()
@@ -48,12 +50,13 @@ public class SpeedAnalytics : MonoBehaviour
 
     void OnWin()
     {
+        Debug.Log("average speed: " + averageSpeed);
         AnalyticsResult resultAvrg = Analytics.CustomEvent("AverageSpeedAnalytics",
                new Dictionary<string, object> {
                 {"Level", SceneManager.GetActiveScene().name },
                 {"AverageSpeed", averageSpeed }
                });
-     
+
 
         AnalyticsResult result = Analytics.CustomEvent("highestSpeedAnalytics",
             new Dictionary<string, object> {
