@@ -50,7 +50,6 @@ public class SpeedAnalytics : MonoBehaviour
 
     void OnWin()
     {
-        Debug.Log("average speed: " + averageSpeed);
         AnalyticsResult resultAvrg = Analytics.CustomEvent("AverageSpeedAnalytics",
                new Dictionary<string, object> {
                 {"Level", SceneManager.GetActiveScene().name },
