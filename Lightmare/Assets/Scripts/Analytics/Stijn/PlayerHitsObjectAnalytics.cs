@@ -11,17 +11,21 @@ public class PlayerHitsObjectAnalytics : MonoBehaviour
 
     static public void OnObjectHit(GameObject obj)
     {
-
-        AnalyticsResult result = Analytics.CustomEvent("HitObject"+ SceneManager.GetActiveScene().name, new Dictionary<string, object> {
+        string eventname = "HitObject" + SceneManager.GetActiveScene().name;
+        eventname = eventname.Replace(" ", string.Empty);
+        AnalyticsResult result = Analytics.CustomEvent(eventname, new Dictionary<string, object> {
             {"Position", obj.transform.position}
 
             }
                 );
+        Debug.Log((eventname));
         Debug.Log((result));
     }
     static public void TotalObjectsHit()
     {
-        AnalyticsResult result = Analytics.CustomEvent("AmountOfObjectsHit"+ SceneManager.GetActiveScene().name, new Dictionary<string, object> {
+        string eventname = "AmountOfObjectsHit" + SceneManager.GetActiveScene().name;
+        eventname = eventname.Replace(" ", string.Empty);
+        AnalyticsResult result = Analytics.CustomEvent(eventname, new Dictionary<string, object> {
             {"Amount", hitObjects }
             }
                 );
@@ -30,7 +34,9 @@ public class PlayerHitsObjectAnalytics : MonoBehaviour
     }
     static public void OnObjectDestroyed(GameObject obj, float magnitude)
     {
-        AnalyticsResult result = Analytics.CustomEvent("DextroyedObject"+ SceneManager.GetActiveScene().name, new Dictionary<string, object>{
+        string eventname = "DextroyedObject" + SceneManager.GetActiveScene().name;
+        eventname = eventname.Replace(" ", string.Empty);
+        AnalyticsResult result = Analytics.CustomEvent(eventname, new Dictionary<string, object>{
             {"ForceApplied", magnitude},
             {"Position", obj.transform.position}
 
@@ -40,7 +46,9 @@ public class PlayerHitsObjectAnalytics : MonoBehaviour
     }
     static public void TotalObjectsdestroyed()
     {
-        AnalyticsResult result = Analytics.CustomEvent("AmountOfObjectsDestroyed"+ SceneManager.GetActiveScene().name, new Dictionary<string, object> {
+        string eventname = "AmountOfObjectsDestroyed" + SceneManager.GetActiveScene().name;
+        eventname = eventname.Replace(" ", string.Empty);
+        AnalyticsResult result = Analytics.CustomEvent(eventname, new Dictionary<string, object> {
             {"Amount", DestroyedObject.Count }
         }
                 );
