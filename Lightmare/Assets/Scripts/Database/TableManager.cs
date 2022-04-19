@@ -16,7 +16,6 @@ public class TableManager : MonoBehaviour
     virtual public void Start()
     {
         CreateConnection();
-        CreateTable();
     }
 
     // Update is called once per frame
@@ -35,7 +34,7 @@ public class TableManager : MonoBehaviour
     public virtual void CreateTable() { }
 
     /// <summary>
-    /// Searches the table for the highest key
+    /// Gives a new key in the table. 
     /// </summary>
     /// <returns>The highest key in the table +1</returns>
     public virtual int GetNewKey()
@@ -44,7 +43,9 @@ public class TableManager : MonoBehaviour
 
         IDbCommand cmnd_read = dbCon.CreateCommand();
         IDataReader reader;
-        cmnd_read.CommandText = "SELECT id FROM " + tableName;
+        string query = "SELECT id FROM " + tableName;
+        Debug.Log(query);
+        cmnd_read.CommandText = query;
         reader = cmnd_read.ExecuteReader();
 
         while (reader.Read())

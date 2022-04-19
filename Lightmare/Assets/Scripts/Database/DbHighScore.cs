@@ -9,7 +9,6 @@ namespace Database
 {
     public class DbHighScore : TableManager
     {
-        public static string tableName = "time_scores";
         string connection;
         public static string levelFieldName = "level_name";
         public static string timeFieldName = "time";
@@ -18,6 +17,16 @@ namespace Database
         public override void Start()
         {
             base.Start();
+            SetupStrings();
+            ClearTable();
+            CreateTable();
+            InsertIntoDatabase("test", 14.9f);
+            Debug.Log("Get lowest time" + GetLowestTimeFromLevel("test").ToString());
+        }
+
+        void SetupStrings()
+        {
+            tableName = "time_scores";
         }
 
         public override void CreateTable()
@@ -26,14 +35,11 @@ namespace Database
             dbcmd = dbCon.CreateCommand();
             string q_createTable =
                 "CREATE TABLE IF NOT EXISTS " + tableName +
-                " (id INTEGER PRIMARY KEY, " + levelFieldName + " STRING, " + timeFieldName + " INTEGER )";
+                " ( id INTEGER PRIMARY KEY," + levelFieldName + " STRING, " + timeFieldName + " FLOAT )";
+            Debug.Log(q_createTable);
 
             dbcmd.CommandText = q_createTable;
-            //Debug.Log(q_createTable);
-            dbcmd.ExecuteReader();
-
-            Debug.Log("1");
-
+            dbcmd.ExecuteReader();//Doesnt this have to be executeNonQuery?
             base.CreateTable();
         }
 
@@ -52,14 +58,33 @@ namespace Database
         {
             IDbCommand cmnd = dbCon.CreateCommand();
             string q_Insert = "INSERT INTO " + tableName + " ( id, " + levelFieldName + ", " + timeFieldName + ") " +
-                "VALUES (" + GetNewKey() + ", \"" + data.levelName + "\", " + (int)data.levelTime + ")";
+                "VALUES (" + GetNewKey() + ", \"" + data.levelName + "\", " + (float)data.levelTime + ")";
+            Debug.Log(q_Insert);
             cmnd.CommandText = q_Insert;
             cmnd.ExecuteNonQuery();
         }
-        float GetLowestTimeFromLevel(string level)
+
+        public float GetLowestTimeFromLevel(string level)
         {
-            Debug.LogError("Has not yet been implemented");
-            return 0f;
+            IDbCommand cmnd = dbCon.CreateCommand();
+            IDataReader reader;
+            string query = "SELECT * FROM " + tableName +
+                " WHERE " + levelFieldName + " == \"" + level +
+                "\" order by " + timeFieldName + " ASC " +
+                "limit 0, 1";
+            Debug.Log(query);
+
+            cmnd.CommandText = query;
+
+            reader = cmnd.ExecuteReader();
+
+            float toReturn = 0f;
+            while (reader.Read())
+            {
+                Debug.Log(reader.GetFloat(2));
+                toReturn = reader.GetFloat(2);
+            }
+            return toReturn;
         }
 
         List<LevelTimeData> Top5Scores()
@@ -68,12 +93,6 @@ namespace Database
             return null;
         }
 
-        /// <summary>
-        /// Clears every value from the table
-        /// </summary>
-        void ClearTable()
-        {
 
-        }
     }
 }
