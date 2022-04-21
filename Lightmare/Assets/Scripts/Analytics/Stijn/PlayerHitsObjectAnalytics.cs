@@ -18,8 +18,6 @@ public class PlayerHitsObjectAnalytics : MonoBehaviour
 
             }
                 );
-        Debug.Log((eventname));
-        Debug.Log((result));
     }
     static public void TotalObjectsHit()
     {
@@ -30,7 +28,6 @@ public class PlayerHitsObjectAnalytics : MonoBehaviour
             }
                 );
         hitObjects = 0;
-        Debug.Log((result));
     }
     static public void OnObjectDestroyed(GameObject obj, float magnitude)
     {
@@ -42,7 +39,6 @@ public class PlayerHitsObjectAnalytics : MonoBehaviour
 
             }
                 );
-        Debug.Log((result));
     }
     static public void TotalObjectsdestroyed()
     {
@@ -52,6 +48,5 @@ public class PlayerHitsObjectAnalytics : MonoBehaviour
             {"Amount", DestroyedObject.Count }
         }
                 );
-        Debug.Log((result));
     }
 }

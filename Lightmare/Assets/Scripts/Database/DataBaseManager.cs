@@ -1,19 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class DataBaseManager : MonoBehaviour
+using UnityEngine.SceneManagement;
+namespace Database
 {
-    [HideInInspector] public static string databaseName = "My_Database";
-    // Start is called before the first frame update
-    void Start()
+    [RequireComponent(typeof(DbHighScore))]
+    public class DataBaseManager : MonoBehaviour
     {
-        
-    }
+        [HideInInspector] public static string databaseName = "My_Database";
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private static DataBaseManager instance;
+        public static DataBaseManager Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
+        public DbHighScore highScore;
+        string levelName;
+
+        private void Awake()
+        {
+            instance = this;
+        }
+        // Start is called before the first frame update
+        void Start()
+        {
+            highScore = GetComponent<DbHighScore>();
+            Debug.Log(highScore);
+            levelName = SceneManager.GetActiveScene().name;
+            
+        }
+
+        void AddTimeToDatabase(float timeToAdd)
+        {
+            StartCoroutine(AddCurrentTimeToDatabase(timeToAdd));
+        }
+
+        public IEnumerator AddCurrentTimeToDatabase(float timeToAdd)
+        {
+            highScore.InsertIntoDatabase(SceneManager.GetActiveScene().name, timeToAdd);
+            return null;
+        }
+
     }
 }

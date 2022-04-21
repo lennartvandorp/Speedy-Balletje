@@ -18,10 +18,7 @@ namespace Database
         {
             base.Start();
             SetupStrings();
-            ClearTable();
             CreateTable();
-            InsertIntoDatabase("test", 14.9f);
-            Debug.Log("Get lowest time" + GetLowestTimeFromLevel("test").ToString());
         }
 
         void SetupStrings()
@@ -29,6 +26,9 @@ namespace Database
             tableName = "time_scores";
         }
 
+        /// <summary>
+        /// Creates the required table for this function
+        /// </summary>
         public override void CreateTable()
         {
             IDbCommand dbcmd;
@@ -87,12 +87,29 @@ namespace Database
             return toReturn;
         }
 
-        List<LevelTimeData> Top5Scores()
+
+        
+        List<float> Top5Scores(string level)
         {
-            Debug.LogError("Has not yet been implemented");
-            return null;
+            List<float> toReturn = new List<float>();
+
+
+            string query ="SELECT "+ timeFieldName +" FROM " + tableName +
+                " WHERE " + levelFieldName + " == \"" + level +
+                "\" order by " + timeFieldName + " ASC " +
+                "limit 0, 5";
+                Debug.Log(query);
+
+            IDbCommand cmnd = dbCon.CreateCommand();
+            cmnd.CommandText = query;
+            IDataReader reader;
+            reader = cmnd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                toReturn.Add(reader.GetFloat(0));
+            }
+            return toReturn;
         }
-
-
     }
 }

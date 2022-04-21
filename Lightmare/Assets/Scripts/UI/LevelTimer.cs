@@ -45,7 +45,8 @@ public class LevelTimer : MonoBehaviour
 
     void StopTimer()
     {
-        //todo: Database implementation of adding the time to it
         isCounting = false;
+        //todo: Database implementation of adding the time to it
+        Database.DataBaseManager.Instance.AddCurrentTimeToDatabase(currentTime);
     }
 }
