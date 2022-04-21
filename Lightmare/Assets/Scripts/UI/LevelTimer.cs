@@ -31,6 +31,7 @@ public class LevelTimer : MonoBehaviour
     void ResetTimer()
     {
         currentTime = 0f;
+        isCounting = true;
     }
 
     void CountTime()
