@@ -19,6 +19,6 @@ public class SpeedIndicator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        tmp.text = Mathf.Round(playerRb.velocity.z).ToString() + " m/s";//Rounds the z speed of the player and displays it to the text. 
+        tmp.text = Mathf.Round(playerRb.velocity.z * 3.6f).ToString() + " km/h";//Rounds the z speed of the player and displays it to the text. 
     }
 }

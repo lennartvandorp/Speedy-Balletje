@@ -1663,7 +1663,7 @@ MonoBehaviour:
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
-  m_SelectedVertices: 02000000
+  m_SelectedVertices: 
 --- !u!23 &5657676145207344974
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1720,7 +1720,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6865892472562113115}
-  m_Material: {fileID: 13400000, guid: 938324d4ff6b05140b687733452ef868, type: 2}
+  m_Material: {fileID: 13400000, guid: 84a283e9a5afd4b4eb9421eaa6ee3e8b, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -2341,7 +2341,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8710405368546426912}
-  m_Material: {fileID: 13400000, guid: 938324d4ff6b05140b687733452ef868, type: 2}
+  m_Material: {fileID: 13400000, guid: 84a283e9a5afd4b4eb9421eaa6ee3e8b, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
