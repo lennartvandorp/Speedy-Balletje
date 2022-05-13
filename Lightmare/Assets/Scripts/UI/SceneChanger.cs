@@ -23,6 +23,6 @@ public class SceneChanger : MonoBehaviour
     }
     public void GotoHome()
     {
-        SceneManager.LoadScene("World Select");
+        SceneManager.LoadScene("TitleScreen");
     }
 }
