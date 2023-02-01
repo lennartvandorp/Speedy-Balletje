@@ -29,7 +29,6 @@ namespace Database
         void Start()
         {
             highScore = GetComponent<DbHighScore>();
-            Debug.Log(highScore);
             levelName = SceneManager.GetActiveScene().name;
             
         }

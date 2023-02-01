@@ -362,5 +362,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuCore
       objectReference: {fileID: 0}
+    - target: {fileID: 8970635608871442865, guid: 9e634132ec75e7f4dab522f5068d9d2d, type: 3}
+      propertyPath: sceneList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8970635608871442865, guid: 9e634132ec75e7f4dab522f5068d9d2d, type: 3}
+      propertyPath: sceneList.Array.data[2].sceneName
+      value: Settings
+      objectReference: {fileID: 0}
+    - target: {fileID: 8970635608871442865, guid: 9e634132ec75e7f4dab522f5068d9d2d, type: 3}
+      propertyPath: sceneList.Array.data[2].sceneTitle
+      value: Settings
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e634132ec75e7f4dab522f5068d9d2d, type: 3}

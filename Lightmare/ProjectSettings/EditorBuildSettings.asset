@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/UI/TitleScreen.unity
     guid: bda24b7613c2b9d4bacac76e8b16afe1
   - enabled: 0
-    path: Assets/Scenes/UI/World Select.unity
+    path: 
     guid: e73556ccadd7d714d89a79fdff9b53f8
   - enabled: 1
     path: Assets/Scenes/UI/World 1.unity
@@ -41,4 +41,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ProLevels/ProLevel 2.unity
     guid: bb817a389428e3043a4e42654ea5052d
+  - enabled: 1
+    path: Assets/Scenes/ProLevels/ProLevel 3.unity
+    guid: 4859834ec0b209b42be3af215fffd5ee
+  - enabled: 1
+    path: Assets/Scenes/UI/Settings.unity
+    guid: 721cb9d1612d1a64d9faf91efab925f6
   m_configObjects: {}

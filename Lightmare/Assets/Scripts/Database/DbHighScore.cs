@@ -36,7 +36,6 @@ namespace Database
             string q_createTable =
                 "CREATE TABLE IF NOT EXISTS " + tableName +
                 " ( id INTEGER PRIMARY KEY," + levelFieldName + " STRING, " + timeFieldName + " FLOAT )";
-            Debug.Log(q_createTable);
 
             dbcmd.CommandText = q_createTable;
             dbcmd.ExecuteReader();//Doesnt this have to be executeNonQuery?
@@ -72,7 +71,6 @@ namespace Database
                 " WHERE " + levelFieldName + " == \"" + level +
                 "\" order by " + timeFieldName + " ASC " +
                 "limit 0, 1";
-            Debug.Log(query);
 
             cmnd.CommandText = query;
 
@@ -81,7 +79,6 @@ namespace Database
             float toReturn = 0f;
             while (reader.Read())
             {
-                Debug.Log(reader.GetFloat(2));
                 toReturn = reader.GetFloat(2);
             }
             return toReturn;

@@ -26,7 +26,6 @@ public class Obstacle : MonoBehaviour
             PlayerHitsObjectAnalytics.hitObjects++;
             PlayerHitsObjectAnalytics.OnObjectHit(this.gameObject);
                 
-            Debug.Log(collision.impactForceSum.magnitude);
             if(collision.impactForceSum.magnitude >= neededForce)
             {
                 PlayerHitsObjectAnalytics.OnObjectDestroyed(this.gameObject, collision.impactForceSum.magnitude);

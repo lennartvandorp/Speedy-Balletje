@@ -249,6 +249,10 @@ PrefabInstance:
       value: World 2
       objectReference: {fileID: 0}
     - target: {fileID: 8970635608871442865, guid: 9e634132ec75e7f4dab522f5068d9d2d, type: 3}
+      propertyPath: sceneList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8970635608871442865, guid: 9e634132ec75e7f4dab522f5068d9d2d, type: 3}
       propertyPath: sceneList.Array.data[0].sceneName
       value: ProLevel 1
       objectReference: {fileID: 0}
@@ -257,12 +261,20 @@ PrefabInstance:
       value: ProLevel 2
       objectReference: {fileID: 0}
     - target: {fileID: 8970635608871442865, guid: 9e634132ec75e7f4dab522f5068d9d2d, type: 3}
+      propertyPath: sceneList.Array.data[2].sceneName
+      value: ProLevel 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8970635608871442865, guid: 9e634132ec75e7f4dab522f5068d9d2d, type: 3}
       propertyPath: sceneList.Array.data[0].sceneTitle
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8970635608871442865, guid: 9e634132ec75e7f4dab522f5068d9d2d, type: 3}
       propertyPath: sceneList.Array.data[1].sceneTitle
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8970635608871442865, guid: 9e634132ec75e7f4dab522f5068d9d2d, type: 3}
+      propertyPath: sceneList.Array.data[2].sceneTitle
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e634132ec75e7f4dab522f5068d9d2d, type: 3}
