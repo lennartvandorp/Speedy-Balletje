@@ -12,7 +12,7 @@ public class CameraShake : MonoBehaviour
         GameManager.Instance.SetCameraShake(this);
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         DynamicCameraShake();
     }
