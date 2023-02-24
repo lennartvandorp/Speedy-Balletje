@@ -9,6 +9,14 @@ public class PlayerController : Observer
 {
     [SerializeField] Transform target;
     [SerializeField] float sensitivity;
+    float adjustedSensitivity
+    {
+        get
+        {
+            return sensitivity / Screen.width * playerPrefSensitivity;
+        }
+    }
+    float playerPrefSensitivity = 1f;
     [SerializeField] float normalMaxHorizontalSpeed;
     [SerializeField] float airMaxHorizontalSpeed;
     [SerializeField] float clampOffset;
@@ -46,7 +54,8 @@ public class PlayerController : Observer
     }
 
     bool isTouchingLeftWall;
-    public bool IsTouchingLeftWallSetter {
+    public bool IsTouchingLeftWallSetter
+    {
         set { isTouchingLeftWall = value; }
     }
 
@@ -57,7 +66,6 @@ public class PlayerController : Observer
     }
 
     public float getCurrentSpeed() { return rb.velocity.z; }
-
 
     void Start()
     {
@@ -76,8 +84,19 @@ public class PlayerController : Observer
         GameManager.Instance.startBoost += StartBoost;
         GameManager.Instance.stopBoost += StopBoost;
         GameManager.Instance.landBoost += TimedBoost;
+        if (PlayerPrefsInterface.Instance)
+        {
+            PlayerPrefsInterface.Instance.onUpdatePrefs.AddListener(UpdatePlayerPrefSensitivity);
+            UpdatePlayerPrefSensitivity();
+        }
         #endregion
 
+
+    }
+
+    void UpdatePlayerPrefSensitivity()
+    {
+        playerPrefSensitivity = PlayerPrefs.GetFloat(PlayerPrefsInterface.Instance.GetPref(PlayerPrefsInterface.Pref.sensitivity));
     }
 
     // Update is called once per frame
@@ -107,7 +126,7 @@ public class PlayerController : Observer
                     else
                     {
                         mouseMovement = Input.mousePosition - lastMousePos;
-                        targetOffset += mouseMovement.x * sensitivity;
+                        targetOffset += mouseMovement.x * adjustedSensitivity;
                         //targetOffset = Mathf.Clamp(targetOffset, -clampOffset, clampOffset);//Clamps the position of the offset
                         target.position = new Vector3(targetOffset, transform.position.y, transform.position.z);
                         rb.velocity = new Vector3(Mathf.Clamp((target.position.x - transform.position.x) * 10f, -maxSpeed, maxSpeed),
@@ -131,7 +150,7 @@ public class PlayerController : Observer
                 ResetTarget();
             }
 
-            if((targetOffset < 0 && isTouchingLeftWall) || (targetOffset > 0 && isTouchingRightWall))
+            if ((targetOffset < 0 && isTouchingLeftWall) || (targetOffset > 0 && isTouchingRightWall))
             {
                 ResetTarget();
             }
@@ -147,7 +166,8 @@ public class PlayerController : Observer
     /// <summary>
     /// Makes the character stop moving when fitting. 
     /// </summary>
-    public void ResetTarget() {
+    public void ResetTarget()
+    {
         targetOffset = transform.position.x;
         target.position = transform.position;
     }
@@ -212,7 +232,8 @@ public class PlayerController : Observer
         StartCoroutine(TimedBoostCoroutine(landBoostTime));
     }
 
-    private IEnumerator TimedBoostCoroutine(float duration) {
+    private IEnumerator TimedBoostCoroutine(float duration)
+    {
         StartBoost();
         yield return new WaitForSeconds(duration);
         StopBoost();

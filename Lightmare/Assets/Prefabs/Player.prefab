@@ -397,7 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 4559829982587844133}
-  sensitivity: 0.02
+  sensitivity: 5
   normalMaxHorizontalSpeed: 20
   airMaxHorizontalSpeed: 10
   clampOffset: 2
