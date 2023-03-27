@@ -16,6 +16,7 @@ public class SliderValueSaver : MonoBehaviour
     private void Start()
     {
         slider = GetComponent<Slider>();
+        slider.value = PlayerPrefs.GetFloat(PlayerPrefsInterface.Instance.GetPref(pref));
     }
 
 

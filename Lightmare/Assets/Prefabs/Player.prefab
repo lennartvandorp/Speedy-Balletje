@@ -368,7 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce26cf3a06f2b3847becfa6776a9bd16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stretchDivider: 300
+  stretchDivider: 150
   stretchAcc: 5
   rotationBody: {fileID: 4559829981527799942}
 --- !u!135 &4559829983371843633

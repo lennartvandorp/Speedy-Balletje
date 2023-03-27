@@ -10,6 +10,7 @@
     "com.unity.netcode.adapter.utp": "1.0.0-pre.2",
     "com.unity.probuilder": "4.5.2",
     "com.unity.remote-config": "3.1.0",
+    "com.unity.render-pipelines.universal": "10.10.1",
     "com.unity.services.analytics": "4.2.0",
     "com.unity.services.authentication": "2.2.0",
     "com.unity.services.ccd.management": "2.1.0",

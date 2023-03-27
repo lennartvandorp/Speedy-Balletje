@@ -1,4 +1,4 @@
-Shader "Hidden/Blur"
+Shader "Custom/Test"
 {
     Properties
     {
